@@ -43,7 +43,7 @@ def find_cyclic_employees(employees:list[Employee])->set:
                 #back-edge found:
                 #everyone from node's first occurence in this path onward is part of cycle
                 idx=path.index(node)
-                cyclic.update([path[idx:]])
+                cyclic.update(path[idx:])
                 break
             if node not in manager_of:
                 break #chain ends at a root or an unresolved manager

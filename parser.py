@@ -28,7 +28,7 @@ def parse_csv(file_bytes:bytes) -> list[RawRow]:
         raise MalformedUploadError("File appears to be empoty:")
     
     header={h.strip() for h in reader.fieldnames}
-    missing=REQUIRED_HEADERS-REQUIRED_HEADERS
+    missing=REQUIRED_HEADERS-header
 
     if missing:
         raise MalformedUploadError(f"Missing rquired columns: {', '.join(sorted(missing))}")

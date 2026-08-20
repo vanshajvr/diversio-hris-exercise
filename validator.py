@@ -57,7 +57,7 @@ def resolve_managers(employees: list[Employee])-> None:
         has_id=bool(e.manager_id)
         has_email=bool(e.manager_email)
 
-        if not has_id and has_email:
+        if not has_id and not has_email:
             continue #root: resolved_manager_id stays ""
 
         mgr_by_id=by_id.get(e.manager_id) if has_id else None
