@@ -22,7 +22,7 @@ class Employee: #A validated, normalized employee accepted for hierarchy analysi
     resolved_manager_id:str="" #keep empty if root or manager_ref_error is set
 
 @dataclass
-class ImportError: #A row level problem preventing full acceptance or hierarchy participation.
+class ImportError_: #A row level problem preventing full acceptance or hierarchy participation.
     row_number:int
     employee_id:str
     message:str
