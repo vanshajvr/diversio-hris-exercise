@@ -18,6 +18,7 @@ class Employee: #A validated, normalized employee accepted for hierarchy analysi
     email:str
     manager_id:str
     manager_email:str
+    department:str
     manager_ref_error:str="" #keep non empty if manager could not be resolved
     resolved_manager_id:str="" #keep empty if root or manager_ref_error is set
 
