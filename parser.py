@@ -1,15 +1,24 @@
+"""
+Basically, this file parses raw CSV bytes into normalised RawRow objects.
+Uses Python's csv modul to hanlde quoted fields, commas in fields, etc correctly.
+"""
+
+
 import csv
 import io
 from models import RawRow
 
 REQUIRED_HEADERS={"employee_id","employee_name","email","manager_id","manager_email","department"}
 
+
 class MalformedUploadError(Exception):
     pass
 
 def parse_csv(file_bytes:bytes) -> list[RawRow]:
+    #so that utf-8-sig strips a BOM if present
+    #also behaves like plain utf-8 if no BOM is present
     try:
-        text=file_bytes.decode("utf-8")
+        text=file_bytes.decode("utf-8-sig")
     except UnicodeDecodeError:
         raise MalformedUploadError("File is not valide UTF-8 text")
     
