@@ -1,4 +1,4 @@
-# HRIS Import: Diversio Excercise Preview
+# HRIS Import: Diversio Exercise Preview
 
 ## Setup and run
 
