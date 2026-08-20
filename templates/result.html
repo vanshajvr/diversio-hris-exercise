@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head><title>HRIS Import Preview</title></head>
+<body style="font-family: sans-serif; max-width: 800px; margin: 2rem auto;">
+  <h1>HRIS Import Preview</h1>
+
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".csv" required>
+    <button type="submit">Upload</button>
+  </form>
+
+  {% if result %}
+    <hr>
+    <h2>Summary</h2>
+    <ul>
+      <li>Total source rows: {{ result.total_rows }}</li>
+      <li>Accepted employees: {{ result.accepted_employees|length }}</li>
+      <li>Roots: {{ result.roots|length }}</li>
+    </ul>
+
+    <h2>Validation errors ({{ result.errors|length }})</h2>
+    {% if result.errors %}
+      <table border="1" cellpadding="6">
+        <tr><th>Row</th><th>Employee ID</th><th>Message</th></tr>
+        {% for e in result.errors %}
+          <tr><td>{{ e.row_number }}</td><td>{{ e.employee_id }}</td><td>{{ e.message }}</td></tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <p>None.</p>
+    {% endif %}
+
+    <h2>Root employees</h2>
+    <ul>
+      {% for r in result.roots %}
+        <li>{{ r.employee_id }} — {{ r.employee_name }}</li>
+      {% endfor %}
+    </ul>
+
+    <h2>Managers and direct-report counts</h2>
+    <table border="1" cellpadding="6">
+      <tr><th>Manager ID</th><th>Direct reports</th></tr>
+      {% for mgr_id, count in result.manager_report_counts.items() %}
+        <tr><td>{{ mgr_id }}</td><td>{{ count }}</td></tr>
+      {% endfor %}
+    </table>
+
+    <h2>Employees in reporting cycles ({{ result.cyclic_employee_ids|length }})</h2>
+    <ul>
+      {% for emp_id in result.cyclic_employee_ids %}
+        <li>{{ emp_id }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</body>
+</html>
