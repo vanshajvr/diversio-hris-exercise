@@ -20,69 +20,41 @@ python3 -m pytest tests/ -v
 
 ## Framework choice
 
-Django is preferred by the exercise, but I used FastAPI instead because
-it's the framework I have direct, hands-on production experience with
-(built two backend projects on it). The core parsing/validation/graph
-logic is plain Python with no framework dependency, so the choice of
-web layer only affects `main.py` and the template rendering, not the
-actual hierarchy analysis.
+- Django is preferred by the exercise, but I used FastAPI.
+- FastAPI is what I actually have hands-on experience with (built two backend projects on it).
+- The core logic (parsing, validation, graph) is plain Python with no framework dependency. The framework only affects `main.py` and the template rendering.
 
 ## Assumptions
 
-- "Both manager fields blank" means a literal root, distinct from an
-  employee whose manager reference failed to resolve. An employee with
-  a manager error stays "accepted" (per the spec) but is excluded from
-  both the root list and the manager-count table, since they don't
-  produce a valid reporting edge.
-- When both `manager_id` and `manager_email` are supplied, both must
-  resolve to the same employee. If either can't be found at all, or
-  they resolve to different people, it's an error.
-- Cycle membership is limited to employees that are strictly part of
-  the cycle. An employee reporting into a cycle (but not part of it)
-  is not flagged as cyclic.
-- Duplicate employee_id/email rows are excluded from hierarchy
-  participation entirely, on both sides: they can't be a manager
-  reference for anyone else, and their own manager reference is not
-  resolved.
+- Both manager fields blank = a real root. This is different from an employee whose manager reference just failed to resolve.
+- An employee with a manager error is still "accepted," but isn't a root and doesn't produce a reporting edge.
+- If both `manager_id` and `manager_email` are given, they must point to the same person. If either can't be found, or they disagree, that's an error.
+- Only employees strictly inside a cycle are flagged as cyclic. Someone reporting into a cycle is not counted as cyclic themselves.
+- Duplicate employee_id/email rows are dropped entirely from the hierarchy, on both sides: they can't be someone's manager, and their own manager isn't resolved either.
 
 ## Complexity
 
-- Parsing: O(n) over the file, single pass.
-- Identity validation: O(n) using two Counters (employee_id, email) to
-  find duplicates, plus one more O(n) pass to build the accepted list.
-- Manager resolution: O(n) using two dicts (by_id, by_email) for O(1)
-  lookups instead of scanning the employee list per row.
-- Cycle detection: O(n) total. Each employee has at most one outgoing
-  edge (their manager), so the reporting structure is a "functional
-  graph," not a general graph. A state map (visiting/done) ensures
-  every node is traversed at most once across all starting points,
-  rather than a fresh DFS per employee.
-
-At 100,000 employees, all of the above stay linear and dict-based, so
-the approach should scale without algorithmic changes. The main
-real-world bottleneck at that scale would be holding the whole parsed
-file in memory at once; a streaming/chunked parser would be the next
-improvement if files grew much larger than this.
+- Parsing: O(n), single pass.
+- Identity validation: O(n) using Counters for duplicate detection.
+- Manager resolution: O(n) using dicts for O(1) lookups, not list scanning.
+- Cycle detection: O(n) total. Each employee has only one manager, so this is a "functional graph," not a general graph. A visiting/done state map means every node is checked once, not once per starting point.
+- At 100k employees, all of this stays linear. The real bottleneck would be holding the whole file in memory — a streaming parser would be the next step if files got much bigger.
 
 ## Known limitations
 
-- No persistence -- results exist only for the current request/response,
-  per the spec.
-- Minimal HTML/no styling, as instructed.
-- Large files are read fully into memory before parsing; true
-  constant-memory streaming isn't implemented.
+- No persistence, per the spec.
+- Minimal HTML, no styling, as instructed.
+- Full file is read into memory before parsing; no true streaming.
 
 ## Time spent
 
-Approximately 90 minutes on implementation (excluding this README and
-the recording).
+- ~90 minutes on the initial build.
+- ~15-20 more minutes in a follow-up session fixing a bug (see below).
+- Excludes this README and the recording.
 
 ## AI tools used
 
-Used an AI assistant to help scaffold the FastAPI/Jinja2 boilerplate
-and talk through the cycle-detection approach for a functional graph
-before implementing it myself. I wrote and understood the validation
-and cycle-detection logic directly, and verified all of it by hand
-against the provided sample CSV (traced the expected cycle, conflict,
-and unresolved-manager cases manually, then confirmed the code
-produced matching output) before writing the automated tests.
+- Used an AI assistant to scaffold the FastAPI/Jinja2 boilerplate and talk through the cycle-detection approach before writing it myself.
+- Wrote and understood the validation and cycle-detection logic directly. Verified it by hand against the sample CSV (traced the cycle, conflict, and unresolved-manager cases manually) before writing tests.
+- While writing the parser, I missed lowercasing `email` and `manager_email` consistently. This silently broke manager resolution for any row with an uppercase email. My tests didn't catch it, since I hadn't written a mixed-case test.
+- Found it through manual testing against the real sample CSV. Used Claude Code in VS Code to help pinpoint the exact line. Understood and verified the fix myself, then re-ran the sample data and full test suite to confirm.
