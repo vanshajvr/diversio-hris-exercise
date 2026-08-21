@@ -39,9 +39,9 @@ def parse_csv(file_bytes:bytes) -> list[RawRow]:
             row_number=i,
             employee_id=(raw.get("employee_id") or "").strip(),
             employee_name=(raw.get("employee_name") or "").strip(),
-            email=(raw.get("email") or "").strip(),
+            email=(raw.get("email") or "").strip().lower(),
             manager_id=(raw.get("manager_id") or "").strip(),
-            manager_email=(raw.get("manager_email") or "").strip(),
+            manager_email=(raw.get("manager_email") or "").strip().lower(),
             department=(raw.get("department") or "").strip()
         ))
     return rows
