@@ -11,7 +11,7 @@ from dataclasses import dataclass
 
 from .models import ImportResult, IssueCode, RowIssue
 from .pipeline import run_import_preview
-from .suggestions import Suggestion, SuggestOptions, suggest_fixes
+from .suggestions import DEFAULT_THRESHOLD, Suggestion, SuggestOptions, suggest_fixes
 from .synthetic import ID_TYPO, KINDS, Corruption, SyntheticOrg, generate_org
 
 
@@ -211,7 +211,6 @@ def precision_coverage(outcomes:list[SuggestionOutcome],threshold:float=0.0)->Pr
         wrong_on_unfixable=sum(o.corruption.true_manager_id is None for o in made),
     )
 
-DEFAULT_THRESHOLD=0.8 #operating point: suggestions below this are shown as "needs review", not proposed
 
 def format_suggestion_benchmark(outcomes:list[SuggestionOutcome],
                                 ablations:dict[str,list[SuggestionOutcome]]|None=None,

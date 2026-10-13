@@ -50,6 +50,18 @@ Rule-based and explainable, and it abstains when the evidence is ambiguous. At t
 threshold it is **99.4% precise** and recovers **90.2%** of fixable references, on orgs held out from calibration.
 It holds back on 99.1% of rows whose manager has left. Write-up: [docs/suggestion-benchmark.md](docs/suggestion-benchmark.md).
 
+## Review queue (web app)
+
+Upload a CSV at http://127.0.0.1:8000 and you get:
+- a data quality score and the import funnel
+- a review queue ordered by **how many people each problem cuts off from the org chart**,
+  with confident fixes pre-selected and lower-confidence ones marked for review
+- the projected effect of accepting the fixes
+- a corrected CSV that changes only the approved cells
+
+`POST /api/preview` returns the same as JSON. Product framing, success metrics and the experiment
+design are in [docs/PRD.md](docs/PRD.md).
+
 ## Framework choice
 
 - Django is preferred by the exercise, but I used FastAPI.

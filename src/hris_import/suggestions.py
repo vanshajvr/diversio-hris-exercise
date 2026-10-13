@@ -33,6 +33,7 @@ NO_CANDIDATE="no_candidate"
 #ID_RESOLVES never occurs in the synthetic data, so its value is a prior, not a measurement.
 CONFIDENCE={ID_FORMAT:0.99,EMAIL_RESOLVES:0.99,EMAIL_DOMAIN:0.99,CONFLICT_ID_TYPO:0.99,CONFLICT_EMAIL_WRONG:0.99,
             ID_TYPO:0.96,EMAIL_TYPO:0.96,ID_RESOLVES:0.95,TYPO_TIEBREAK:0.60,TYPO_OTHER_DEPT:0.28}
+DEFAULT_THRESHOLD=0.8 #operating point: 99.4% precision, 90.2% coverage on held-out orgs (docs/suggestion-benchmark.md)
 
 
 @dataclass

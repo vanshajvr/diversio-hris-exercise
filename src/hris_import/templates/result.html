@@ -1,59 +1,184 @@
 <!DOCTYPE html>
-<html>
-<head><title>HRIS Import Preview</title></head>
-<body style="font-family: sans-serif; max-width: 800px; margin: 2rem auto;">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HRIS Import Preview</title>
+<style>
+  :root {
+    --bg: #ffffff; --surface: #f6f7f9; --text: #1d2330; --muted: #5b6475; --border: #dde1e8;
+    --accent: #2f5bd3; --good: #1f7a4d; --warn: #9a6200; --bad: #b42335;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14171d; --surface: #1d2129; --text: #e6e9ef; --muted: #9aa3b2; --border: #2e3440;
+      --accent: #7c9cf0; --good: #5fc290; --warn: #e0b04f; --bad: #f0798a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  h2 { font-size: 1.1rem; margin: 32px 0 8px; }
+  p.lead, .muted { color: var(--muted); }
+  form.upload { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 16px 0; }
+  button { background: var(--accent); color: #fff; border: 0; border-radius: 6px; padding: 8px 14px;
+           font: inherit; cursor: pointer; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+  .tile .value { font-size: 1.6rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .tile .label { color: var(--muted); font-size: 0.85rem; }
+  .callout { border-left: 4px solid var(--good); background: var(--surface); padding: 10px 14px;
+             margin: 16px 0; border-radius: 0 6px 6px 0; }
+  .callout.error { border-color: var(--bad); }
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 500; font-size: 0.85rem; }
+  td.num, th.num { text-align: right; }
+  .badge { display: inline-block; padding: 0 6px; border-radius: 4px; font-size: 0.8rem; border: 1px solid; }
+  .badge.auto { color: var(--good); } .badge.review { color: var(--warn); } .badge.manual { color: var(--muted); }
+  .badge.error { color: var(--bad); } .badge.warning { color: var(--warn); }
+  .evidence { color: var(--muted); font-size: 0.85rem; }
+  code { font-size: 0.85em; }
+  details { margin-top: 16px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+</style>
+</head>
+<body>
+<main>
   <h1>HRIS Import Preview</h1>
+  <p class="lead">Upload an employee CSV to validate it, see how healthy the org data is, and fix broken manager references before import.</p>
 
-  <form action="/upload" method="post" enctype="multipart/form-data">
+  <form class="upload" action="/upload" method="post" enctype="multipart/form-data">
     <input type="file" name="file" accept=".csv" required>
-    <button type="submit">Upload</button>
+    <button type="submit">Check file</button>
   </form>
 
   {% if result %}
-    <hr>
-    <h2>Summary</h2>
-    <ul>
-      <li>Total source rows: {{ result.total_rows }}</li>
-      <li>Accepted employees: {{ result.accepted_employees|length }}</li>
-      <li>Rejected rows: {{ result.rejected_rows }}</li>
-      <li>Roots: {{ result.roots|length }}</li>
-      <li>Errors: {{ result.errors|length }} &middot; Warnings: {{ result.warnings|length }}</li>
-    </ul>
+  {% set file_errors = result.issues|selectattr("row_number", "equalto", 0)|list %}
+  {% if file_errors %}
+    <div class="callout error"><strong>This file could not be read.</strong> {{ file_errors[0].message }}</div>
+  {% else %}
 
-    <h2>Issues ({{ result.issues|length }})</h2>
-    <p><small>Errors reject the row (or the whole file, row 0). Warnings keep the row but leave it out of the hierarchy.</small></p>
-    {% if result.issues %}
-      <table border="1" cellpadding="6">
-        <tr><th>Row</th><th>Employee ID</th><th>Severity</th><th>Code</th><th>Message</th></tr>
-        {% for e in result.issues %}
-          <tr><td>{{ e.row_number }}</td><td>{{ e.employee_id }}</td><td>{{ e.severity }}</td><td><code>{{ e.code }}</code></td><td>{{ e.message }}</td></tr>
+  <div class="tiles">
+    <div class="tile"><div class="value">{{ metrics.quality.score }}</div><div class="label">Data quality score / 100</div></div>
+    <div class="tile"><div class="value">{{ result.total_rows }}</div><div class="label">Rows in file</div></div>
+    <div class="tile"><div class="value">{{ result.accepted_employees|length }}</div><div class="label">Accepted ({{ result.rejected_rows }} rejected)</div></div>
+    <div class="tile"><div class="value">{{ "%.0f"|format(metrics.quality.connectivity_rate * 100) }}%</div><div class="label">Connected to the org chart</div></div>
+    <div class="tile"><div class="value">{{ result.errors|length }} / {{ result.warnings|length }}</div><div class="label">Errors / warnings</div></div>
+  </div>
+
+  {% if queue.projection %}
+    {% set p = queue.projection %}
+    <div class="callout">
+      Accepting the <strong>{{ p.fixes }}</strong> pre-selected fixes reconnects
+      <strong>{{ p.connected_after - p.connected_before }}</strong> people to the org chart
+      and raises data quality from <strong>{{ p.score_before }}</strong> to <strong>{{ p.score_after }}</strong>.
+    </div>
+  {% endif %}
+
+  <h2>Review queue ({{ queue.items|length }})</h2>
+  {% if queue.items %}
+    <p class="muted">Ordered by how many people each problem cuts off from the org chart. Fixes at
+      {{ "%.0f"|format(threshold * 100) }}%+ confidence are pre-selected; lower ones need a human check.</p>
+    <form action="/apply" method="post">
+      <textarea name="csv_text" hidden>{{ csv_text }}</textarea>
+      <div class="scroll"><table>
+        <tr><th></th><th class="num">People affected</th><th>Problem</th><th>Suggested fix</th></tr>
+        {% for item in queue.items %}
+        <tr>
+          <td>
+            {% if item.suggestion and item.suggestion.suggested_manager_id %}
+              <input type="checkbox" name="fix" aria-label="Accept fix for {{ item.employee_ids[0] }}"
+                     value="{{ item.employee_ids[0] }}={{ item.suggestion.suggested_manager_id }}"
+                     {% if item.tier == "auto" %}checked{% endif %}>
+            {% endif %}
+          </td>
+          <td class="num">{{ item.people_affected }}</td>
+          <td>{{ item.title }}<br><span class="evidence">row{{ "s" if item.row_numbers|length > 1 }} {{ item.row_numbers|join(", ") }} &middot; <code>{{ item.issue_code }}</code></span></td>
+          <td>
+            <span class="badge {{ item.tier }}">{{ {"auto": "confident", "review": "needs review", "manual": "manual"}[item.tier] }}</span>
+            {% if item.suggestion and item.suggestion.suggested_manager_id %}
+              &rarr; <strong>{{ item.suggestion.suggested_manager_id }}</strong> ({{ "%.0f"|format(item.suggestion.confidence * 100) }}%)
+            {% endif %}
+            {% if item.suggestion %}<br><span class="evidence">{{ item.suggestion.explanation }}</span>{% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </table></div>
+      <p><button type="submit">Download corrected CSV</button>
+        <span class="muted">Only the selected fixes are applied; every other cell is left unchanged.</span></p>
+    </form>
+  {% else %}
+    <p>Nothing to fix.</p>
+  {% endif %}
+
+  <div class="grid2">
+    <section>
+      <h2>Import funnel</h2>
+      <table>
+        <tr><th>Stage</th><th class="num">Rows</th><th class="num">Share</th></tr>
+        {% for s in metrics.funnel %}
+          <tr><td>{{ s.stage }}</td><td class="num">{{ s.count }}</td><td class="num">{{ "%.1f"|format(s.pct_of_rows * 100) }}%</td></tr>
         {% endfor %}
       </table>
-    {% else %}
-      <p>None.</p>
-    {% endif %}
+    </section>
+    <section>
+      <h2>Org health</h2>
+      <table>
+        <tr><td>Layers</td><td class="num">{{ metrics.layers }}</td></tr>
+        <tr><td>Managers / individual contributors</td><td class="num">{{ metrics.managers }} / {{ metrics.individual_contributors }}</td></tr>
+        <tr><td>Span of control: median (max)</td><td class="num">{{ metrics.span.median }} ({{ metrics.span.max }})</td></tr>
+        <tr><td>Managers with a single report</td><td class="num">{{ metrics.span.narrow_span_manager_ids|length }}</td></tr>
+        <tr><td>Managers with 13+ reports</td><td class="num">{{ metrics.span.wide_span_manager_ids|length }}</td></tr>
+      </table>
+    </section>
+  </div>
 
-    <h2>Root employees</h2>
+  <h2>Departments</h2>
+  <div class="scroll"><table>
+    <tr><th>Department</th><th class="num">Headcount</th><th class="num">Managers</th><th class="num">ICs per manager</th></tr>
+    {% for d in metrics.departments %}
+      <tr><td>{{ d.department }}</td><td class="num">{{ d.headcount }}</td><td class="num">{{ d.managers }}</td>
+          <td class="num">{{ "%.1f"|format(d.ics_per_manager) if d.ics_per_manager is not none else "–" }}</td></tr>
+    {% endfor %}
+  </table></div>
+
+  <details>
+    <summary>All issues ({{ result.issues|length }})</summary>
+    <p class="muted">Errors reject the row. Warnings keep the row but leave it out of the hierarchy.</p>
+    <div class="scroll"><table>
+      <tr><th class="num">Row</th><th>Employee ID</th><th>Severity</th><th>Code</th><th>Message</th></tr>
+      {% for e in result.issues %}
+        <tr><td class="num">{{ e.row_number }}</td><td>{{ e.employee_id }}</td><td><span class="badge {{ e.severity }}">{{ e.severity }}</span></td><td><code>{{ e.code }}</code></td><td>{{ e.message }}</td></tr>
+      {% endfor %}
+    </table></div>
+  </details>
+
+  <details>
+    <summary>Hierarchy: roots, managers and cycles</summary>
+    <h2>Root employees ({{ result.roots|length }})</h2>
     <ul>
-      {% for r in result.roots %}
-        <li>{{ r.employee_id }} — {{ r.employee_name }}</li>
-      {% endfor %}
+      {% for r in result.roots %}<li>{{ r.employee_id }} — {{ r.employee_name }}</li>{% endfor %}
     </ul>
-
     <h2>Managers and direct-report counts</h2>
-    <table border="1" cellpadding="6">
-      <tr><th>Manager ID</th><th>Direct reports</th></tr>
+    <div class="scroll"><table>
+      <tr><th>Manager ID</th><th class="num">Direct reports</th></tr>
       {% for mgr_id, count in result.manager_report_counts.items() %}
-        <tr><td>{{ mgr_id }}</td><td>{{ count }}</td></tr>
+        <tr><td>{{ mgr_id }}</td><td class="num">{{ count }}</td></tr>
       {% endfor %}
-    </table>
-
+    </table></div>
     <h2>Employees in reporting cycles ({{ result.cyclic_employee_ids|length }})</h2>
     <ul>
-      {% for emp_id in result.cyclic_employee_ids|sort %}
-        <li>{{ emp_id }}</li>
-      {% endfor %}
+      {% for emp_id in result.cyclic_employee_ids|sort %}<li>{{ emp_id }}</li>{% endfor %}
     </ul>
+  </details>
+
   {% endif %}
+  {% endif %}
+</main>
 </body>
 </html>
