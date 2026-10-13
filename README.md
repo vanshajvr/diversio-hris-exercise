@@ -2,6 +2,10 @@
 
 [![CI](https://github.com/vanshajvr/diversio-sde-intern-project/actions/workflows/ci.yml/badge.svg)](https://github.com/vanshajvr/diversio-sde-intern-project/actions/workflows/ci.yml)
 
+**Live demo: [diversio-sde-intern-project.onrender.com](https://diversio-sde-intern-project.onrender.com/try/messy-org)**.
+It opens straight onto a messy 500-person org. It runs on Render's free tier, so the first visit may take
+up to a minute to wake up.
+
 Validates employee CSV exports from an HRIS, measures how healthy the resulting org chart is, and
 helps an HR admin fix broken manager references. The suggested fixes have a **measured precision**,
 not just a plausible one.
@@ -87,8 +91,9 @@ The app stores nothing. The uploaded file travels back with the fix form.
 
 ### Deploy
 
-`render.yaml` is a Render blueprint: on render.com choose **New → Blueprint**, pick this repo, and it
-builds with `pip install -e .` and serves on the free plan. The editable install is deliberate, because
+Live at https://diversio-sde-intern-project.onrender.com. `render.yaml` is a Render blueprint: on
+render.com choose **New → Blueprint**, pick this repo, and it builds with `pip install -e .` and serves
+on the free plan. The editable install is deliberate, because
 the demo buttons read their files from `data/`.
 
 ## Repository layout
