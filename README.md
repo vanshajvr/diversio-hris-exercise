@@ -6,6 +6,8 @@
 It opens straight onto a messy 500-person org. It runs on Render's free tier, so the first visit may take
 up to a minute to wake up.
 
+![Demo: running the messy sample org, reviewing the queue, and downloading the corrected CSV](docs/demo.gif)
+
 Validates employee CSV exports from an HRIS, measures how healthy the resulting org chart is, and
 helps an HR admin fix broken manager references. The suggested fixes have a **measured precision**,
 not just a plausible one.
