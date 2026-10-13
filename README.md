@@ -18,6 +18,16 @@ pytest -v
 ruff check .
 ```
 
+## Org-health report
+
+```bash
+hris-import report sample_hris.csv          # text report
+hris-import report sample_hris.csv --json   # machine-readable
+```
+
+The report covers a data quality score, the import funnel, org depth and layers, span of control,
+largest orgs, a department breakdown and issue counts by code.
+
 ## Framework choice
 
 - Django is preferred by the exercise, but I used FastAPI.
