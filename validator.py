@@ -10,7 +10,7 @@ from models import RawRow, Employee, ImportError_
 
 def validate_identities(rows: list[RawRow]) -> tuple[list[Employee], list[ImportError_]]:
 
-    #Pass1: reject rows with missing or duplicared identity fields
+    #Pass1: reject rows with missing or duplicated identity fields
     #returning the accepted employees(before manager-resolve) and identity level errors
 
     errors:list[ImportError_]=[]
@@ -22,13 +22,16 @@ def validate_identities(rows: list[RawRow]) -> tuple[list[Employee], list[Import
 
     for r in rows:
         if not r.employee_id:
-            errors.append(ImportError_(r.row_number,r.employee_id, "Missing required employee_id or email."))
+            errors.append(ImportError_(r.row_number,r.employee_id, "Missing required employee_id."))
+            continue
+        if not r.email:
+            errors.append(ImportError_(r.row_number,r.employee_id, "Missing required email."))
             continue
         if id_counts[r.employee_id]>1:
-            errors.append(ImportError_(r.row_number,r.employee_id, f"Duplicae employee_id '{r.employee_id}'."))
+            errors.append(ImportError_(r.row_number,r.employee_id, f"Duplicate employee_id '{r.employee_id}'."))
             continue
         if email_counts[r.email]>1:
-            errors.append(ImportError_(r.row_number,r.employee_id, f"Duplicare email '{r.email}'."))
+            errors.append(ImportError_(r.row_number,r.employee_id, f"Duplicate email '{r.email}'."))
             continue
         accepted.append(Employee(
             row_number=r.row_number,
@@ -44,7 +47,7 @@ def validate_identities(rows: list[RawRow]) -> tuple[list[Employee], list[Import
 def resolve_managers(employees: list[Employee])-> None:
 
     #Pass2: resolve each employee's manager reference in place.
-    #sets 'resolved_manager_id' on success, or 'manager_ref_error' on falure.
+    #sets 'resolved_manager_id' on success, or 'manager_ref_error' on failure.
     #a failure could be 'not found', 'conflicting references' or 'self-management'.
     #An employee with a manager error is still "accepted"
     #but it produces no reporting relationship and is not treated as a root.
@@ -77,6 +80,6 @@ def resolve_managers(employees: list[Employee])-> None:
                 e.manager_ref_error="Manager reference could not be found."
                 continue
         if manager.employee_id==e.employee_id:
-            e.manager_ref_error="Employee cannot manager themsleves."
+            e.manager_ref_error="Employee cannot manage themselves."
             continue
         e.resolved_manager_id=manager.employee_id

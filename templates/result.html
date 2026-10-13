@@ -47,7 +47,7 @@
 
     <h2>Employees in reporting cycles ({{ result.cyclic_employee_ids|length }})</h2>
     <ul>
-      {% for emp_id in result.cyclic_employee_ids %}
+      {% for emp_id in result.cyclic_employee_ids|sort %}
         <li>{{ emp_id }}</li>
       {% endfor %}
     </ul>

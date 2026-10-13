@@ -1,6 +1,6 @@
 """
 Basically, this file parses raw CSV bytes into normalised RawRow objects.
-Uses Python's csv modul to hanlde quoted fields, commas in fields, etc correctly.
+Uses Python's csv module to handle quoted fields, commas in fields, etc correctly.
 """
 
 
@@ -20,28 +20,52 @@ def parse_csv(file_bytes:bytes) -> list[RawRow]:
     try:
         text=file_bytes.decode("utf-8-sig")
     except UnicodeDecodeError:
-        raise MalformedUploadError("File is not valide UTF-8 text")
-    
-    reader=csv.DictReader(io.StringIO(text))
+        raise MalformedUploadError("File is not valid UTF-8 text.")
 
-    if reader.fieldnames is None:
-        raise MalformedUploadError("File appears to be empoty:")
-    
-    header={h.strip() for h in reader.fieldnames}
-    missing=REQUIRED_HEADERS-header
+    #plain csv.reader instead of DictReader so that:
+    #1. header names can be normalised (" Employee_ID " -> "employee_id") before lookup
+    #2. row_number is the line a record starts on, which stays correct when a quoted field spans lines
+    reader=csv.reader(io.StringIO(text))
+
+    try:
+        header=next(reader,None)
+    except csv.Error as exc:
+        raise MalformedUploadError(f"Could not read header: {exc}")
+    if header is None:
+        raise MalformedUploadError("File appears to be empty.")
+
+    columns=[h.strip().lower() for h in header]
+    missing=REQUIRED_HEADERS-set(columns)
 
     if missing:
-        raise MalformedUploadError(f"Missing rquired columns: {', '.join(sorted(missing))}")
-    
+        raise MalformedUploadError(f"Missing required columns: {', '.join(sorted(missing))}")
+
+    col_index={name:columns.index(name) for name in REQUIRED_HEADERS}
+
     rows=[]
-    for i,raw in enumerate(reader,start=2):
+    while True:
+        start_line=reader.line_num+1
+        try:
+            values=next(reader)
+        except StopIteration:
+            break
+        except csv.Error as exc:
+            raise MalformedUploadError(f"Line {start_line}: {exc}")
+
+        if not any(v.strip() for v in values):
+            continue #blank line or a row of only commas
+
+        def get(col:str)->str:
+            i=col_index[col]
+            return values[i].strip() if i<len(values) else ""
+
         rows.append(RawRow(
-            row_number=i,
-            employee_id=(raw.get("employee_id") or "").strip(),
-            employee_name=(raw.get("employee_name") or "").strip(),
-            email=(raw.get("email") or "").strip().lower(),
-            manager_id=(raw.get("manager_id") or "").strip(),
-            manager_email=(raw.get("manager_email") or "").strip().lower(),
-            department=(raw.get("department") or "").strip()
+            row_number=start_line,
+            employee_id=get("employee_id"),
+            employee_name=get("employee_name"),
+            email=get("email").lower(),
+            manager_id=get("manager_id"),
+            manager_email=get("manager_email").lower(),
+            department=get("department")
         ))
     return rows
