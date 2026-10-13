@@ -61,7 +61,7 @@ against those labels, and CI asserts the key findings on every push.
 python3 -m venv venv && source venv/bin/activate
 pip install -e ".[dev]"
 
-uvicorn hris_import.web:app --reload        # open http://127.0.0.1:8000, upload data/synthetic_org_500.csv
+uvicorn hris_import.web:app --reload        # open http://127.0.0.1:8000, click "Messy 500-person org"
 pytest                                      # 96 tests
 ruff check .
 ```
@@ -77,12 +77,19 @@ ruff check .
 
 ### Web and API
 
-- `GET /`: upload page
+- `GET /`: upload page, with one-click demo files
+- `GET /try/messy-org`, `GET /try/original`: run a demo file without uploading anything
 - `POST /upload`: KPI tiles, review queue with evidence, projected impact, funnel, org health
 - `POST /apply`: downloads `corrected.csv`, changing only the approved manager cells
 - `POST /api/preview`: everything above as JSON
 
 The app stores nothing. The uploaded file travels back with the fix form.
+
+### Deploy
+
+`render.yaml` is a Render blueprint: on render.com choose **New → Blueprint**, pick this repo, and it
+builds with `pip install -e .` and serves on the free plan. The editable install is deliberate, because
+the demo buttons read their files from `data/`.
 
 ## Repository layout
 

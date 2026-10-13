@@ -101,3 +101,30 @@ def test_csv_content_cannot_break_out_of_the_page():
 
     assert "<script>alert(1)</script>" not in page
     assert "&lt;/textarea&gt;&lt;script&gt;" in page
+
+
+def test_landing_page_offers_samples_and_privacy_notice():
+    page=client.get("/").text
+
+    assert 'href="/try/messy-org"' in page and 'href="/try/original"' in page
+    assert "please don't upload real employee data" in page
+
+
+def test_try_sample_renders_results_without_an_upload():
+    page=client.get("/try/messy-org").text
+
+    assert "Results for <strong>synthetic_org_500.csv</strong>" in page
+    assert re.search(r"Review queue \(\d+\)",page)
+    assert '<textarea name="csv_text" hidden>employee_id,' in page #fixes still work on samples
+
+
+def test_unknown_sample_is_404():
+    assert client.get("/try/../../etc/passwd").status_code==404
+    assert client.get("/try/nope").status_code==404
+
+
+def test_events_tag_where_the_data_came_from(caplog):
+    with caplog.at_level("INFO",logger="hris_import.events"):
+        client.get("/try/original")
+
+    assert '"source": "sample:original"' in caplog.text

@@ -5,7 +5,7 @@ from dataclasses import asdict
 from pathlib import Path
 from typing import Annotated
 
-from fastapi import FastAPI, Form, Request, UploadFile
+from fastapi import FastAPI, Form, HTTPException, Request, UploadFile
 from fastapi.responses import HTMLResponse, Response
 from fastapi.templating import Jinja2Templates
 
@@ -17,6 +17,14 @@ from .suggestions import DEFAULT_THRESHOLD
 app = FastAPI(title="HRIS Import Preview")
 # resolved from this file, so the app works no matter which directory uvicorn starts in
 templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
+
+# demo files for visitors who have no HRIS export of their own. They live in the repo's data/ folder,
+# which is why the deployment installs the package in editable mode (see render.yaml).
+DATA_DIR = Path(__file__).resolve().parents[2] / "data"
+SAMPLES = {
+    "messy-org": ("synthetic_org_500.csv", "Messy 500-person org"),
+    "original": ("sample_hris.csv", "Original take-home sample"),
+}
 
 # one JSON line per product event; docs/PRD.md defines what each field is for.
 # uvicorn only configures its own loggers, so without this handler the events would be dropped.
@@ -32,12 +40,13 @@ def _event(name: str, **fields) -> None:
     events.info(json.dumps({"event": name, **fields}))
 
 
-def _preview(content: bytes) -> dict:
+def _preview(content: bytes, source: str) -> dict:
     result, queue = review(content)
     metrics = compute_metrics(result) if result.total_rows else None
     tiers = Counter(item.tier for item in queue.items)
     _event(
         "import_previewed",
+        source=source,  # "upload" or "sample:<name>", so demo traffic can be told apart from real use
         rows=result.total_rows,
         issues=len(result.issues),
         queue_auto=tiers["auto"],
@@ -49,20 +58,34 @@ def _preview(content: bytes) -> dict:
     return {"result": result, "metrics": metrics, "queue": queue}
 
 
+def _render_preview(request: Request, content: bytes, source: str, filename: str):
+    context = _preview(content, source)
+    # no server-side storage: the file travels back with the fix form, so applying fixes stays stateless
+    context["csv_text"] = content.decode("utf-8-sig") if context["result"].total_rows else ""
+    context["threshold"] = DEFAULT_THRESHOLD
+    context["filename"] = filename
+    context["samples"] = SAMPLES
+    return templates.TemplateResponse(request, "result.html", context)
+
+
 @app.get("/", response_class=HTMLResponse)
 def index(request: Request):
-    return templates.TemplateResponse(request, "result.html", {"result": None})
+    return templates.TemplateResponse(request, "result.html", {"result": None, "samples": SAMPLES})
 
 
 @app.post("/upload", response_class=HTMLResponse)
 async def upload(request: Request, file: UploadFile):
     # read one byte past the limit so oversized files are rejected without loading them whole
     content = await file.read(MAX_UPLOAD_BYTES + 1)
-    context = _preview(content)
-    # no server-side storage: the file travels back with the fix form, so applying fixes stays stateless
-    context["csv_text"] = content.decode("utf-8-sig") if context["result"].total_rows else ""
-    context["threshold"] = DEFAULT_THRESHOLD
-    return templates.TemplateResponse(request, "result.html", context)
+    return _render_preview(request, content, "upload", file.filename or "upload.csv")
+
+
+@app.get("/try/{sample}", response_class=HTMLResponse)
+def try_sample(request: Request, sample: str):
+    if sample not in SAMPLES:
+        raise HTTPException(status_code=404, detail="Unknown sample")
+    filename, _ = SAMPLES[sample]
+    return _render_preview(request, (DATA_DIR / filename).read_bytes(), f"sample:{sample}", filename)
 
 
 @app.post("/apply")
@@ -86,7 +109,7 @@ def apply(csv_text: Annotated[str, Form()], fix: Annotated[list[str] | None, For
 @app.post("/api/preview")
 async def api_preview(file: UploadFile) -> dict:
     content = await file.read(MAX_UPLOAD_BYTES + 1)
-    context = _preview(content)
+    context = _preview(content, "api")
     result, metrics, queue = context["result"], context["metrics"], context["queue"]
     return {
         "summary": {

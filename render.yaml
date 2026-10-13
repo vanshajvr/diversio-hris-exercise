@@ -1,0 +1,13 @@
+# Render blueprint: connect the repo on render.com and it picks this up.
+services:
+  - type: web
+    name: diversio-sde-intern-project
+    runtime: python
+    plan: free
+    # editable install so the app can find the demo files in data/
+    buildCommand: pip install -e .
+    startCommand: uvicorn hris_import.web:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
