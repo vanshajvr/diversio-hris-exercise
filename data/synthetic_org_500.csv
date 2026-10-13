@@ -1,0 +1,501 @@
+employee_id,employee_name,email,manager_id,manager_email,department
+EMP-1453,Chen Alvarez,chen.alvarez@acme-corp.com,,rosa.das@acme-corp.com,Customer Success
+EMP-1238,Aarav Okafor,aarav.okafor@acme-corp.com,EMP-1203,yara.wong@acme-corp.com,Operations
+EMP-1228,Sofia Wong,sofia.wong@acme-corp.com,,dana.zhang@acme-corp.com,Customer Success
+EMP-1136,Ava Kim,ava.kim@acme-corp.com,,mei.ellis@acme-corp.com,Customer Success
+EMP-1258,Grace Nguyen,grace.nguyen@acme-corp.com,EMP-1376,,Operations
+EMP-1018,Noah Wong,noah.wong@acme-corp.com,,lena.kim@acme-corp.com,Customer Success
+EMP-1420,Kai Fischer,kai.fischer@acme-corp.com,EMP-1477,,Operations
+EMP-1457,Mei Quinn,mei.quinn@acme-corp.com,EMP-1031,farah.singh@acme-corp.com,Engineering
+EMP-1062,Elif Nakamura,elif.nakamura@acme-corp.com,,jonas.mehta@acme-corp.com,Customer Success
+EMP-1339,Priya Turner,priya.turner@acme-corp.com,,diego.kim@acme-corp.com,Operations
+EMP-1291,Ana Usman,ana.usman2@acme-corp.com,EMP-1160,,Operations
+EMP-1050,Arjun Mehta,arjun.mehta@acme-corp.com,EMP-1360,,Operations
+EMP-1290,Ana Schmidt,ana.schmidt@acme-corp.com,EMP-1387,quinn.kowalski@acme-corp.com,Customer Success
+EMP-1020,Lena Bennett,lena.bennett@acme-corp.com,EMP-1320,,Operations
+EMP-1182,Priya Moreau,priya.moreau2@acme-corp.com,EMP-1413,,Customer Success
+EMP-1432,Aarav Reed,aarav.reed@acme-corp.com,EMP-1292,,Customer Success
+EMP-1317,Nadia Shah,nadia.shah2@acme-corp.com,EMP-1258,,Operations
+EMP-1274,Ines Quinn,ines.quinn@acme-corp.com,EMP-1218,,Operations
+EMP-1399,Priya Sato,priya.sato@acme-corp.com,,felix.adeyemi@acme-corp.com,Product
+EMP-1451,Noah Shah,noah.shah@acme-corp.com,EMP-1199,emma.rossi2@acme-corp.com,Customer Success
+EMP-1387,Wei Varga,wei.varga@acme-corp.com,EMP-1158,jonas.mehta@acme-corp.com,Customer Success
+EMP-1242,Sam Shah,sam.shah@acme-corp.com,EMP-1402,,Operations
+EMP-1149,Dana Zhang,dana.zhang@acme-corp.com,,elif.laurent@acme-corp.com,Customer Success
+EMP-1146,Zoe Kim,zoe.kim2@acme-corp.com,,alex.dubois@acme-corp.com,Customer Success
+EMP-1409,Isaac Sato,isaac.sato@acme-corp.com,EMP-1158,jonas.mehta@acme-corp.com,Customer Success
+EMP-1365,Leo Garcia,leo.garcia@acme-corp.com,EMP-1018,noah.wong@acme-corp.com,Customer Success
+EMP-1428,Emma Nakamura,emma.nakamura@acme-corp.com,EMP-1197,,Customer Success
+EMP-1216,Isaac Kowalski,isaac.kowalski@acme-corp.com,EMP-1075,rosa.das@acme-corp.com,Customer Success
+EMP-1034,Quinn Kowalski,quinn.kowalski@acme-corp.com,EMP-1477,ana.mehta@acme-corp.com,Operations
+EMP-1277,Maya Sato,maya.sato@acme-corp.com,EMP-1403,grace.bennett@acme-corp.com,Operations
+EMP-1027,Bruno Alvarez,bruno.alvarez@acme-corp.com,EMP-1199,,Customer Success
+EMP-1239,Kai Dubois,kai.dubois@acme-corp.com,EMP-1187,uma.moreau@acme-corp.com,Product
+EMP-1025,Vera Bennett,vera.bennett2@acme-corp.com,EMP-1323,,Customer Success
+EMP-1138,Vera Das,vera.das@acme-corp.com,EMP-1407,abena.nguyen@acme-corp.com,Customer Success
+EMP-1108,Arjun Das,arjun.das2@acme-corp.com,EMP-1438,,Operations
+EMP-1145,Zoe Schmidt,zoe.schmidt@acme-corp.com,,ana.bauer@acme-corp.com,Customer Success
+EMP-1366,Chen Das,chen.das@acme-corp.com,EMP-1483,,Product
+EMP-1010,Uma Reed,uma.reed@acme-corp.com,EMP-1032,felix.adeyemi@acme-corp.com,Product
+EMP-1107,Diego Usman,diego.usman@acme-corp.com,EMP-1310,grace.bennett@acme-corp.com,Customer Success
+EMP-1077,Arjun Garcia,arjun.garcia@acme-corp.com,EMP-1477,ana.mehta@acme-corp.com,Operations
+EMP-1120,Yara Wong,yara.wong2@acme-corp.com,EMP-1483,maya.rossi@acme-corp.com,
+EMP-1294,Sofia Kim,sofia.kim2@acme-corp.com,EMP-1075,rosa.das@acme-corp.com,Customer Success
+EMP-1388,Hana Turner,hana.turner@acme-corp.com,EMP-1321,wei.usman@acme-corp.com,Customer Success
+EMP-1450,Lena Das,lena.das@acme-corp.com,,leo.mehta@acme.io,Operations
+EMP-1002,Noah Das,noah.das@acme-corp.com,EMP-1044,,Product
+EMP-1214,Wei Jensen,wei.jensen2@acme-corp.com,,mei.nguyen@acme-corp.com,Customer Success
+EMP-1192,Rosa Lopez,rosa.lopez@acme-corp.com,EMP1402,,Operations
+EMP-1249,Nadia Okafor,nadia.okafor@acme-corp.com,,elif.alvarez@acme-corp.com,Operations
+EMP-1393,Aarav Rossi,aarav.rossi@acme-corp.com,EMP-1310,,Customer Success
+EMP-1376,Diego Kim,diego.kim@acme-corp.com,,lena.das@acme-corp.com,Operations
+EMP-1197,Abena Nakamura,abena.nakamura2@acme-corp.com,EMP-1413,lena.kim@acme-corp.com,Customer Success
+EMP-1223,Sam Park,sam.park@acme-corp.com,EMP-1483,,Product
+EMP-1256,Chen Garcia,chen.garcia@acme-corp.com,EMP-1452,,Customer Success
+EMP-1209,Yara Ellis,yara.ellis@acme-corp.com,,chen.moreau@acme-corp.com,Operations
+EMP-1117,Noah Jensen,noah.jensen@acme-corp.com,EMP-1160,,Operations
+EMP-1124,Chen Ito,chen.ito@acme-corp.com,EMP-1482,emma.sato@acme-corp.com,Operations
+EMP-1460,Rosa Park,rosa.park@acme-corp.com,EMP-118,,Customer Success
+EMP-1477,Ana Mehta,ana.mehta@acme-corp.com,,uma.garcia@acme-corp.com,Operations
+EMP-1481,Diego Bennett,diego.bennett@acme-corp.com,EMP-1096,,Operations
+EMP-1482,Emma Sato,emma.sato@acme-corp.com,EMP-1284,,Operations
+EMP-1281,Ana Sato,ana.sato@acme-corp.com,EMP-1160,quinn.adeyemi@acme-corp.com,Operations
+EMP-1311,Rosa Quinn,rosa.quinn2@acme-corp.com,EMP-1146,zoe.kim2@acme-corp.com,Customer Success
+EMP-1392,Mei Bennett,mei.bennett@acme-corp.com,EMP-1182,,Customer Success
+EMP-1219,Yara Patel,yara.patel@acme-corp.com,,rosa.das@acme-corp.com,Customer Success
+EMP-1163,Chen Moreau,chen.moreau@acme-corp.com,EMP-1284,,Operations
+EMP-1461,Aarav Usman,aarav.usman@acme-corp.com,EMP-1407,,Customer Success
+EMP-1301,Rosa Ellis,rosa.ellis@acme-corp.com,EMP-1044,isaac.turner@acme-corp.com,Product
+EMP-1109,Aarav Mehta,aarav.mehta@acme-corp.com,EMP-1385,,Customer Success
+EMP-1480,Sofia Haddad,sofia.haddad@acme-corp.com,EMP-1177,,Customer Success
+EMP-1358,Rosa Moreau,rosa.moreau2@acme-corp.com,EMP-1289,,Customer Success
+EMP-1111,Arjun Das,arjun.das@acme-corp.com,EMP-1096,,Operations
+EMP-1156,Alex Lopez,alex.lopez@acme-corp.com,EMP-1266,,Customer Success
+EMP-1110,Leo Quinn,leo.quinn@acme-corp.com,1088,,Customer Success
+EMP-1465,Uma Park,uma.park@acme-corp.com,EMP-1221,,Sales
+EMP-1074,Ines Dubois,ines.dubois@acme-corp.com,EMP-1455,elif.dubois@acme-corp.com,Operations
+EMP-1416,Aarav Singh,aarav.singh@acme-corp.com,EMP-1459,bruno.quinn@acme-corp.com,Sales
+EMP-1471,Ava Schmidt,ava.schmidt2@acme-corp.com,EMP-1321,,Customer Success
+EMP-1046,Diego Dubois,diego.dubois@acme-corp.com,EMP-1485,,Sales
+EMP-1253,Farah Ito,farah.ito@acme-corp.com,EMP-1450,,Operations
+EMP-1470,Sofia Quinn,sofia.quinn@acme-corp.com,,grace.bennett@acme-corp.com,Operations
+EMP-1360,Chen Kim,chen.kim@acme-corp.com,EMP-1089,,Operations
+EMP-1041,Elif Shah,elif.shah@acme-corp.com,EMP-1463,,Customer Success
+EMP-1076,Omar Gupta,omar.gupta@acme-corp.com,EMP-1163,,Operations
+EMP-1155,Bruno Reed,bruno.reed@acme-corp.com,,felix.singh@acme-corp.com,Operations
+EMP-1369,Farah Fischer,farah.fischer2@acme-corp.com,,chen.kim@acme-corp.com,Operations
+EMP-1410,Arjun Silva,arjun.silva@acme-corp.com,EMP-1318,,Customer Success
+EMP-1495,Kai Turner,kai.turner@acme-corp.com,EMP-1031,,Engineering
+EMP-1280,Sam Patel,sam.patel@acme-corp.com,EMP-1195,,Customer Success
+EMP-1315,Chen Dubois,chen.dubois@acme-corp.com,EMP-1376,,Operations
+EMP-1133,Aarav Kowalski,aarav.kowalski@acme-corp.com,EMP-1203,,Operations
+EMP-1463,Emma Shah,emma.shah@acme-corp.com,,dana.bauer@acme-corp.com,Customer Success
+EMP-1414,Vera Bauer,vera.bauer@acme-corp.com,EMP-1407,,Customer Success
+EMP-1244,Ava Schmidt,ava.schmidt@acme-corp.com,EMP-1319,,Customer Success
+EMP-1396,Noah Moreau,noah.moreau@acme-corp.com,EMP-1160,,Operations
+EMP-1437,Emma Kowalski,emma.kowalski@acme-corp.com,EMP-1000,abena.varga@acme-corp.com,Customer Success
+EMP-1084,Nadia Usman,nadia.usman@acme-corp.com,,mei.das@acme-corp.com,Customer Success
+EMP-1325,Mei Fischer,mei.fischer@acme-corp.com,EMP-1267,zoe.das@acme-corp.com,Sales
+EMP-1413,Lena Kim,lena.kim@acme-corp.com,EMP-1499,,Customer Success
+EMP-1351,Arjun Varga,arjun.varga@acme-corp.com,EMP-1401,,Operations
+EMP-1181,Wei Jensen,wei.jensen@acme-corp.com,EMP-1091,sofia.kim@acme-corp.com,Customer Success
+EMP-1091,Sofia Kim,sofia.kim@acme-corp.com,,zoe.kim2@acme-corp.com,Customer Success
+EMP-1221,Leo Zhang,leo.zhang@acme-corp.com,EMP-1485,,Sales
+EMP-1456,Diego Silva,diego.silva@acme-corp.com,EMP-1267,zoe.das@acme-corp.com,Sales
+EMP-1093,Ravi Quinn,ravi.quinn@acme-corp.com,,priya.moreau@acme-corp.com,Sales
+EMP-1061,Uma Costa,uma.costa@acme-corp.com,EMP-1423,,Customer Success
+EMP-1168,Elif Bauer,elif.bauer@acme-corp.com,,yara.bennett@acme-corp.com,Operations
+EMP-1448,Hana Haddad,hana.haddad@acme-corp.com,,farah.singh@acme-corp.com,Engineering
+EMP-1493,Chen Schmidt,chen.schmidt@acme-corp.com,EMP-1485,priya.moreau@acme-corp.com,Sales
+EMP-1400,Arjun Nakamura,arjun.nakamura@acme-corp.com,EMP-1233,,Operations
+EMP-1390,Ines Singh,ines.singh@acme-corp.com,EMP-1455,,Operations
+EMP-1203,Yara Wong,yara.wong@acme-corp.com,EMP-1089,,Operations
+EMP-1082,Noah Bauer,noah.bauer@acme-corp.com,,arjun.okafor@acme-corp.com,Sales
+EMP-1088,Alex Kowalski,alex.kowalski@acme-corp.com,EMP-1323,,Customer Success
+EMP-1300,Ines Costa,ines.costa@acme-corp.com,,diego.rossi@acme-corp.com,Operations
+EMP-1276,Zoe Mehta,zoe.mehta@acme-corp.com,EMP-1364,arjun.okafor@acme-corp.com,Sales
+EMP-1198,Zoe Reed,zoe.reed@acme-corp.com,EMP-1482,,Operations
+EMP-1250,Wei Shah,wei.shah@acme-corp.com,EMP-1100,noah.shah@acme-corp.com,Operations
+EMP-1355,Emma Nguyen,emma.nguyen@acme-corp.com,,abena.varga@acme-corp.com,Customer Success
+EMP-1424,Ines Okafor,ines.okafor@acme-corp.com,EMP-1218,,Operations
+EMP-1144,Grace Shah,grace.shah2@acme-corp.com,,abena.mehta@acme.io,Operations
+EMP-1129,Ravi Singh,ravi.singh@acme-corp.com,EMP-1091,,Customer Success
+EMP-1289,Lena Zhang,lena.zhang@acme-corp.com,EMP-1463,,Customer Success
+EMP-1378,Chen Varga,chen.varga@acme-corp.com,EMP-1352,,Operations
+EMP-1173,Noah Turner,noah.turner@acme-corp.com,,vera.jensen@acme-corp.com,Customer Success
+EMP-1257,Ravi Bennett,ravi.bennett@acme-corp.com,EMP-1146,,Customer Success
+EMP-1262,Sam Quinn,sam.quinn@acme-corp.com,EMP-1447,,Operations
+EMP-1016,Amara Jensen,amara.jensen2@acme-corp.com,,emma.shah@acme-corp.com,Customer Success
+EMP-1200,Nadia Turner,nadia.turner@acme-corp.com,EMP-1025,,Customer Success
+EMP-1184,Amara Patel,amara.patel@acme-corp.com,,yara.wong@acme-corp.com,Operations
+EMP-1140,Leo Mehta,leo.mehta@acme-corp.com,,,Executive
+EMP-1407,Abena Nguyen,abena.nguyen@acme-corp.com,EMP-1462,dana.bauer@acme-corp.com,Customer Success
+EMP-1442,Kai Bennett,kai.bennett@acme-corp.com,EMP-1087,,Customer Success
+EMP-1260,Dana Usman,dana.usman@acme-corp.com,,hana.jensen@acme-corp.com,Customer Success
+EMP-1207,Elif Gupta,elif.gupta@acme-corp.com,EMP-1462,,Customer Success
+EMP-1226,Vera Usman,vera.usman@acme-corp.com,EMP-1459,,Sales
+EMP-1231,Emma Haddad,emma.haddad@acme-corp.com,EMP-1199,emma.rossi2@acme-corp.com,Customer Success
+EMP-1455,Elif Dubois,elif.dubois@acme-corp.com,EMP-1466,,Operations
+EMP-1497,Arjun Rossi,arjun.rossi@acme-corp.com,EMP-1343,kai.wong@acme-corp.com,Operations
+EMP-1213,Dana Silva,dana.silva@acme-corp.com,EMP-1163,,Operations
+EMP-1440,Abena Singh,abena.singh@acme-corp.com,EMP-1463,,Customer Success
+EMP-1103,Lena Turner,lena.turner@acme-corp.com,EMP-1285,ravi.das@acme-corp.com,Product
+EMP-1270,Abena Bennett,abena.bennett@acme-corp.com,,alex.park@acme-corp.com,Customer Success
+EMP-1158,Jonas Mehta,jonas.mehta@acme-corp.com,EMP-1413,,Customer Success
+EMP-1261,Vera Sato,vera.sato@acme-corp.com,EMP-1197,,Customer Success
+EMP-1278,Kai Zhang,kai.zhang@acme-corp.com,EMP-1407,,Customer Success
+ EMP-1208,Grace Schmidt,  GRACE.SCHMIDT2@ACME-CORP.COM ,EMP-1267,,Sales
+EMP-1434,Priya Shah,priya.shah@acme-corp.com,EMP-1402,,Operations
+EMP-1122,Abena Mehta,abena.mehta@acme-corp.com,EMP-1089,,Operations
+EMP-1418,Noah Garcia,noah.garcia@acme-corp.com,EMP-1138,vera.das@acme-corp.com,Customer Success
+EMP-1394,Zoe Lopez,zoe.lopez@acme-corp.com,,uma.ito2@acme-corp.com,Product
+EMP-1329,Rosa Singh,rosa.singh@acme-corp.com,EMP-1284,omar.park@acme-corp.com,Operations
+EMP-1013,Hana Jensen,hana.jensen@acme-corp.com,EMP-1323,mei.nguyen@acme-corp.com,Customer Success
+EMP-1241,Uma Schmidt,uma.schmidt@acme-corp.com,,uma.moreau@acme-corp.com,Product
+EMP-1379,Chen Fischer,chen.fischer@acme-corp.com,EMP-1308,,Operations
+EMP-1247,Felix Ellis,felix.ellis@acme-corp.com,EMP-1191,,Operations
+EMP-1247,Felix Ellis,felix.ellis@acme-corp.com,EMP-1191,,Operations
+EMP-1296,Vera Garcia,vera.garcia@acme-corp.com,EMP-1283,,Operations
+EMP-1316,Grace Das,grace.das@acme-corp.com,EMP-1376,,Operations
+EMP-1251,Grace Fischer,grace.fischer@acme-corp.com,EMP-1441,,Operations
+EMP-1011,Abena Park,abena.park@acme-corp.com,EMP-1232,,Product
+EMP-1233,Amara Mehta,amara.mehta@acme-corp.com,emp-1376,,Operations
+EMP-1045,Rosa Rossi,rosa.rossi@acme-corp.com,EMP-1093,,Sales
+EMP-1433,Chen Ellis,chen.ellis@acme-corp.com,EMP-1218,,Operations
+EMP-1404,Vera Shah,vera.shah@acme-corp.com,EMP-1318,,Customer Success
+EMP-1234,Diego Turner,diego.turner@acme-corp.com,EMP-1321,,Customer Success
+EMP-1430,Elif Costa,elif.costa@acme-corp.com,EMP-1384,,Customer Success
+EMP-1279,Amara Fischer,amara.fischer@acme-corp.com,,omar.dubois@acme-corp.com,Operations
+EMP-1212,Diego Chen,diego.chen@acme-corp.com,EMP-1199,,Customer Success
+ EMP-1033,Noah Silva,  NOAH.SILVA@ACME-CORP.COM ,EMP-1182,,Customer Success
+EMP-1190,Mei Okafor,mei.okafor@acme-corp.com,EMP-1323,,Customer Success
+EMP-1055,Ava Singh,ava.singh@acme-corp.com,EMP-1385,,Customer Success
+EMP-1167,Bruno Lopez,bruno.lopez@acme-corp.com,EMP-3185,,Customer Success
+EMP-1485,Priya Moreau,priya.moreau@acme-corp.com,EMP-1140,,Sales
+EMP-1038,Kai Patel,kai.patel@acme-corp.com,,grace.bennett@acme-corp.com,Operations
+EMP-1406,Aarav Costa,aarav.costa2@acme-corp.com,EMP-1364,arjun.okafor@acme-corp.com,Sales
+EMP-1348,Jonas Das,jonas.das@acme-corp.com,EMP-1441,,Operations
+EMP-1371,Lena Rossi,lena.rossi@acme-corp.com,EMP-1377,,Customer Success
+EMP-1364,Arjun Okafor,arjun.okafor@acme-corp.com,EMP-1485,priya.moreau@acme-corp.com,Sales
+EMP-1058,Noah Dubois,noah.dubois@acme-corp.com,EMP-1013,,Customer Success
+EMP-1344,Farah Shah,farah.shah@acme-corp.com,EMP-1320,,Operations
+EMP-1188,Rosa Alvarez,rosa.alvarez@acme-corp.com,EMP-1364,,Sales
+EMP-1024,Ana Usman,ana.usman@acme-corp.com,EMP-1253,,Operations
+EMP-1179,Jonas Lopez,jonas.lopez@acme-corp.com,EMP-1252,,Customer Success
+EMP-1499,Elif Laurent,elif.laurent@acme-corp.com,EMP-1302,,Customer Success
+EMP-1347,Omar Patel,omar.patel@acme-corp.com,EMP-1450,,Operations
+EMP-1067,Lena Lopez,lena.lopez@acme-corp.com,emp1103,,Product
+EMP-1374,Lena Jensen,lena.jensen@acme-corp.com,,wei.usman@acme-corp.com,Customer Success
+EMP-1080,Leo Mehta,leo.mehta2@acme-corp.com,EMP-1224,,Customer Success
+EMP-1054,Tariq Alvarez,tariq.alvarez@acme-corp.com,EMP-1146,zoe.kim2@acme-corp.com,Customer Success
+EMP-1484,Bruno Mehta,bruno.mehta@acme-corp.com,EMP 1292,mei.das@acme-corp.com,Customer Success
+EMP-1131,Zoe Kim,zoe.kim@acme-corp.com,EMP-1291,,Operations
+EMP-1326,Ava Costa,ava.costa@acme-corp.com,,mei.nguyen@acme-corp.com,Customer Success
+EMP-1218,Zoe Haddad,zoe.haddad@acme-corp.com,EMP-1450,,Operations
+ EMP-1097,Rosa Moreau,  ROSA.MOREAU@ACME-CORP.COM ,,zoe.haddad@acme-corp.com,Operations
+EMP-1006,Vera Reed,vera.reed@acme-corp.com,EMP-1258,grace.nguyen@acme-corp.com,Operations
+EMP-1128,Mei Gupta,mei.gupta@acme-corp.com,EMP-1207,,Customer Success
+EMP-1225,Sofia Usman,sofia.usman2@acme-corp.com,EMP-1199,,Customer Success
+EMP-1215,Sam Mehta,sam.mehta@acme-corp.com,EMP-1103,lena.turner@acme-corp.com,Product
+EMP-1134,Ana Kowalski,ana.kowalski@acme-corp.com,,bruno.quinn@acme-corp.com,Sales
+EMP-1331,Ines Silva,ines.silva@acme-corp.com,EMP-1218,zoe.haddad@acme-corp.com,Operations
+EMP-1178,Grace Costa,grace.costa@acme-corp.com,EMP-1093,,Sales
+EMP-1069,Ana Costa,ana.costa2@acme-corp.com,EMP-1025,,Customer Success
+EMP-1004,Jonas Wong,jonas.wong@acme-corp.com,EMP-1477,,Operations
+EMP-1488,Rosa Moreau,rosa.moreau3@acme-corp.com,EMP-1267,,Sales
+EMP-1094,Kai Rossi,kai.rossi@acme-corp.com,,leo.asto@acme-corp.com,Operations
+EMP-1429,Hana Costa,hana.costa2@acme-corp.com,,elif.gupta@acme-corp.com,Customer Success
+EMP-1012,Amara Haddad,amara.haddad@acme-corp.com,EMP-1232,,Product
+EMP-1332,Vera Quinn,vera.quinn@acme-corp.com,EMP-1203,,Operations
+EMP-1372,Jonas Quinn,jonas.quinn@acme-corp.com,EMP-1158,jonas.mehta@acme-corp.com,Customer Success
+EMP-1381,Ava Adeyemi,ava.adeyemi@acme-corp.com,,vera.ito@acme-corp.com,Customer Success
+EMP-1386,Leo Adeyemi,leo.adeyemi@acme-corp.com,EMP-1402,,Operations
+EMP-1489,Ana Gupta,ana.gupta@acme-corp.com,EMP-1031,farah.singh@acme-corp.com,Engineering
+EMP-1154,Grace Schmidt,grace.schmidt@acme-corp.com,EMP-1326,,Customer Success
+EMP-1148,Ravi Bennett,ravi.bennett2@acme-corp.com,EMP-1158,jonas.mehta@acme-corp.com,Customer Success
+EMP-1293,Alex Park,alex.park@acme-corp.com,EMP-1149,dana.zhang@acme-corp.com,Customer Success
+EMP-1237,Tariq Okafor,tariq.okafor@acme-corp.com,,emma.park@acme-corp.com,Operations
+EMP-1068,Wei Nguyen,wei.nguyen@acme-corp.com,EMP-1343,kai.wong@acme-corp.com,Operations
+EMP-1043,Lena Okafor,lena.okafor@acme-corp.com,EMP-1158,,Customer Success
+EMP-1483,Maya Rossi,maya.rossi@acme-corp.com,EMP-1285,,
+EMP-1135,Elif Dubois,elif.dubois2@acme-corp.com,EMP-1485,,Sales
+EMP-1496,Kai Moreau,kai.moreau@acme-corp.com,EMP-1403,,Operations
+EMP-1368,Hana Das,hana.das@acme-corp.com,EMP-1283,vera.chen@acme-corp.com,Operations
+EMP-1019,Ana Bauer,ana.bauer@acme-corp.com,EMP-1349,,Customer Success
+EMP-1147,Hana Tanaka,hana.tanaka@acme-corp.com,,alex.park@acme-corp.com,Customer Success
+EMP-1287,Omar Das,omar.das@acme-corp.com,,nadia.varga@acme-corp.com,Operations
+EMP-1264,Rosa Wong,rosa.wong@acme-corp.com,EMP-1018,,Customer Success
+EMP-1363,Mei Singh,mei.singh2@acme-corp.com,EMP-1387,,Customer Success
+EMP-1042,Diego Reed,diego.reed@acme-corp.com,EMP-1442,kai.bennett@acme-corp.com,Customer Success
+EMP-1014,Amara Garcia,amara.garcia@acme-corp.com,EMP-1485,,Sales
+EMP-1031,Farah Singh,farah.singh@acme-corp.com,EMP-1140,,Engineering
+EMP-1232,Quinn Nakamura,quinn.nakamura@acme-corp.com,EMP-1285,,Product
+EMP-1222,Uma Zhang,uma.zhang@acme-corp.com,EMP-1289,lena.zhang@acme-corp.com,Customer Success
+EMP-1288,Leo Singh,leo.singh@acme-corp.com,,elif.dubois@acme-corp.com,Operations
+EMP-1009,Vera Rossi,vera.rossi@acme-corp.com,EMP-1093,,Sales
+ EMP-1113,Hana Garcia,  HANA.GARCIA@ACME-CORP.COM ,EMP-1455,,Operations
+EMP-1060,Vera Adeyemi,vera.adeyemi@acme-corp.com,,chen.usman@acme-corp.com,Operations
+EMP-1028,Sofia Okafor,sofia.okafor@acme-corp.com,EMP-1463,emma.shah@acme-corp.com,Customer Success
+EMP-1323,Mei Nguyen,mei.nguyen@acme-corp.com,EMP-1462,dana.bauer@acme-corp.com,Customer Success
+EMP-1469,Farah Fischer,farah.fischer@acme-corp.com,EMP-1308,chen.usman@acme-corp.com,Operations
+EMP-1194,Ana Singh,ana.singh@acme-corp.com,EMP-1122,abena.mehta@acme-corp.com,Operations
+EMP-1353,Sofia Zhang,sofia.zhang@acme-corp.com,EMP-1319,,Customer Success
+EMP-1189,Kai Kim,kai.kim@acme-corp.com,EMP-1218,zoe.haddad@acme-corp.com,Operations
+EMP-1166,Yara Ellis,yara.ellis2@acme-corp.com,EMP-1385,,Customer Success
+EMP-1367,Omar Garcia,omar.garcia@acme-corp.com,,ana.bauer@acme-corp.com,Customer Success
+EMP-1137,Leo Chen,leo.chen@acme-corp.com,EMP-1347,omar.patel@acme-corp.com,Operations
+EMP-1065,Chen Gupta,chen.gupta@acme-corp.com,,uma.ito2@acme-corp.com,Product
+EMP-1206,Uma Park,uma.park2@acme-corp.com,EMP-1341,,Product
+EMP-1464,Vera Fischer,vera.fischer@acme-corp.com,,dana.bauer@acme-corp.com,Customer Success
+EMP-1048,Mei Mehta,mei.mehta@acme-corp.com,,elifshah@acme-corp.com,Customer Success
+EMP-1217,Omar Garcia,omar.garcia2@acme-corp.com,EMP-1458,,Customer Success
+EMP-1235,Noah Alvarez,noah.alvarez@acme-corp.com,EMP-1441,,Operations
+EMP-1476,Bruno Varga,bruno.varga@acme-corp.com,,chen.usman@acme-corp.com,Operations
+EMP-1099,Lena Ito,lena.ito@acme-corp.com,EMP-1458,vera.jensen@acme-corp.com,Customer Success
+EMP-1070,Ava Garcia,ava.garcia@acme-corp.com,EMP-1352,,Operations
+EMP-1447,Arjun Kim,arjun.kim@acme-corp.com,,omar.sato@acme-corp.com,Operations
+EMP-1459,Bruno Quinn,bruno.quinn@acme-corp.com,EMP-1485,,Sales
+EMP-1126,Amara Fischer,amara.fischer2@acme-corp.com,EMP-1197,,Customer Success
+EMP-1125,Sam Bennett,sam.bennett@acme-corp.com,EMP-1160,,Operations
+EMP-1169,Kai Lopez,kai.lopez@acme-corp.com,EMP-1482,,Operations
+EMP-1003,Felix Chen,felix.chen@acme-corp.com,EMP-1403,grace.bennett@acme-corp.com,Operations
+EMP-1199,Emma Rossi,emma.rossi2@acme-corp.com,EMP-1408,,Customer Success
+EMP-1159,Emma Haddad,emma.haddad2@acme-corp.com,EMP-1044,,Product
+EMP-1414,Vera Bauer,vera.bauer@acme-corp.com,EMP-1407,,Customer Success
+EMP-1303,Farah Kim,farah.kim@acme-corp.com,,dana.nakamura@acme-corp.com,Customer Success
+EMP-1422,Uma Ito,uma.ito2@acme-corp.com,EMP-1103,,Product
+EMP-1227,Elif Moreau,elif.moreau@acme-corp.com,,ravi.laurent@acme-corp.com,Customer Success
+EMP-1185,Ravi Shah,ravi.shah@acme-corp.com,EMP-1207,elif.gupta@acme-corp.com,
+EMP-1273,Chen Park,chen.park@acme-corp.com,EMP-1203,yara.wong@acme-corp.com,Operations
+EMP-1236,Ava Bauer,ava.bauer@acme-corp.com,EMP-1452,,Customer Success
+EMP-1441,Omar Dubois,omar.dubois@acme-corp.com,EMP-1466,,Operations
+EMP-1452,Omar Gupta,omar.gupta2@acme-corp.com,EMP-1302,,Customer Success
+EMP-1100,Maya Park,maya.park@acme-corp.com,EMP-1160,yara.bennett@acme-corp.com,Operations
+EMP-1005,Wei Dubois,wei.dubois@acme-corp.com,EMP-1032,felix.adeyemi@acme-corp.com,Product
+EMP-1403,Grace Bennett,grace.bennett@acme-corp.com,EMP-1466,,Operations
+EMP-1204,Elif Wong,elif.wong@acme-corp.com,EMP-1182,priya.moreau2@acme-corp.com,Customer Success
+EMP-1052,Uma Zhang,uma.zhang2@acme-corp.com,EMP-1267,,Sales
+EMP-1402,Leo Sato,leo.sato@acme-corp.com,,omar.park@acme-corp.com,Operations
+EMP-1114,Jonas Laurent,jonas.laurent@acme-corp.com,EMP-1435,,Customer Success
+EMP-1423,Kai Kowalski,kai.kowalski@acme-corp.com,EMP-1349,kai.nguyen@acme-corp.com,Customer Success
+EMP-1389,Chen Mehta,chen.mehta@acme-corp.com,EMP-1096,,Operations
+EMP-1246,Isaac Ito,isaac.ito@acme-corp.com,EMP-1341,uma.ito@acme-corp.com,Product
+EMP-1106,Felix Singh,felix.singh@acme-corp.com,,diego.rossi@acme-corp.com,Operations
+EMP-1259,Isaac Garcia,isaac.garcia@acme-corp.com,EMP-1000,,Customer Success
+EMP-1001,Ravi Varga,ravi.varga@acme-corp.com,,noah.wong@acme-corp.com,Customer Success
+EMP-1202,Isaac Costa,isaac.costa@acme-corp.com,EMP-1292,,Customer Success
+EMP-1007,Ravi Chen,ravi.chen2@acme-corp.com,EMP-1106,,Operations
+EMP-1023,Chen Adeyemi,chen.adeyemi@acme-corp.com,EMP-1455,,Operations
+EMP-1150,Quinn Laurent,quinn.laurent@acme-corp.com,EMP-1485,mei.ellis@acme-corp.com,Sales
+EMP-1032,Felix Adeyemi,felix.adeyemi@acme-corp.com,EMP-1285,,Product
+EMP-1248,Priya Gupta,priya.gupta2@acme-corp.com,,priya.moreau@acme-corp.com,Sales
+EMP-1269,Ines Bennett,ines.bennett@acme-corp.com,EMP-1146,zoe.kim2@acme-corp.com,Customer Success
+EMP-1271,Bruno Kim,bruno.kim@acme-corp.com,EMP-1343,,Operations
+EMP-1380,Yara Schmidt,yara.schmidt@acme-corp.com,EMP-1292,,Customer Success
+EMP-1229,Tariq Kowalski,tariq.kowalski@acme-corp.com,,vera.jensen@acme-corp.com,Customer Success
+EMP-1143,Diego Costa,diego.costa@acme-corp.com,EMP-1377,dana.nakamura@acme-corp.com,Customer Success
+EMP-1175,Maya Turner,maya.turner@acme-corp.com,,vera.ito@acme-corp.com,Customer Success
+EMP-1132,Diego Chen,diego.chen2@acme-corp.com,EMP-1252,rosa.costa@acme-corp.com,Customer Success
+EMP-1050,Arjun Mehta,arjun.mehta@acme-corp.com,EMP-1360,,Operations
+EMP-1267,Zoe Das,zoe.das@acme-corp.com,EMP-1459,,Sales
+EMP-1006,Vera Reed,vera.reed@acme-corp.com,EMP-1258,grace.nguyen@acme-corp.com,Operations
+EMP-1438,Hana Costa,hana.costa@acme-corp.com,EMP-1096,,Operations
+EMP-1161,Leo Kowalski,leo.kowalski@acme-corp.com,EMP-1138,vera.das@acme-corp.com,Customer Success
+EMP-1468,Tariq Schmidt,tariq.schmidt@acme-corp.com,,mei.nguyen@acme-corp.com,Customer Success
+EMP-1196,Nadia Bauer,nadia.bauer@acme-corp.com,,ava.costa@acme-corp.com,Customer Success
+EMP-1151,Aarav Bauer,aarav.bauer@acme-corp.com,EMP-1008,abena.nakamura@acme-corp.com,Operations
+EMP-1022,Aarav Schmidt,aarav.schmidt@acme-corp.com,EMP-1182,priya.moreau2@acme-corp.com,Customer Success
+EMP-1343,Kai Wong,kai.wong@acme-corp.com,EMP-1284,,Operations
+EMP-1330,Ava Shah,ava.shah@acme-corp.com,EMP-1385,,Customer Success
+EMP-1384,Ravi Laurent,ravi.laurent@acme-corp.com,EMP-1413,lena.kim@acme-corp.com,Customer Success
+EMP-1405,Chen Ellis,chen.ellis2@acme-corp.com,EMP-1103,,Product
+EMP-1314,Rosa Usman,rosa.usman@acme-corp.com,,alex.kowalski@acme-corp.com,Customer Success
+EMP-1177,Tariq Haddad,tariq.haddad@acme-corp.com,,nadia.bauer2@acme.io,Customer Success
+EMP-1445,Ines Bennett,ines.bennett2@acme-corp.com,,leo.zhang@acme-corp.com,Sales
+EMP-1297,Rosa Fischer,rosa.fischer@acme-corp.com,EMP-1292,,Customer Success
+EMP-1320,Nadia Gupta,nadia.gupta@acme-corp.com,EMP-1450,,Operations
+EMP-1073,Rosa Turner,rosa.turner@acme-corp.com,,sam.shah@acme-corp.com,Operations
+EMP-1412,Vera Dubois,vera.dubois@acme-corp.com,EMP-1275,,Operations
+EMP-1078,Aarav Kim,aarav.kim@acme-corp.com,EMP-1008,,Operations
+EMP-1164,Nadia Lopez,nadia.lopez@acme-corp.com,,abena.mehta@acme-corp.com,Operations
+EMP-1490,Dana Bennett,dana.bennett@acme-corp.com,,quinn.nakamura@acme.io,Product
+EMP-1037,Quinn Alvarez,quinn.alvarez@acme-corp.com,EMP-1320,,Operations
+EMP-1335,Jonas Moreau,jonas.moreau@acme-corp.com,EMP-1160,,Operations
+EMP-1029,Alex Rossi,alex.rossi@acme-corp.com,,emma.park@acme-corp.com,Operations
+EMP-1341,Uma Ito,uma.ito@acme-corp.com,,ravi.das@acme-corp.com,Product
+EMP-1382,Diego Rossi,diego.rossi2@acme-corp.com,EMP-1308,,Operations
+EMP-1230,Noah Bennett,noah.bennett@acme-corp.com,EMP-1218,zoe.haddad@acme-corp.com,Operations
+EMP-1494,Diego Ito,diego.ito@acme-corp.com,EMP-1025,vera.bennett2@acme-corp.com,Customer Success
+EMP-1224,Ravi Park,ravi.park@acme-corp.com,EMP-1310,,Customer Success
+EMP-1066,Amara Jensen,amara.jensen3@acme-corp.com,EMP-1285,ravi.das@acme-corp.com,Product
+EMP-1044,Isaac Turner,isaac.turner@acme-corp.com,,ravi.das@acme-corp.com,Product
+EMP-1446,Felix Varga,felix.varga@acme-corp.com,EMP-1041,elif.shah@acme-corp.com,Customer Success
+EMP-1266,Rosa Nguyen,rosa.nguyen2@acme-corp.com,EMP-1149,dana.zhang@acme-corp.com,Customer Success
+EMP-1292,Mei Das,mei.das@acme-corp.com,EMP-1349,kai.nguyen@acme-corp.com,Customer Success
+EMP-1015,Sam Ellis,sam.ellis@acme-corp.com,EMP-1032,felix.adeyemi@acme-corp.com,Product
+EMP-1309,Isaac Nakamura,isaac.nakamura@acme-corp.com,,nadia.gupta@acme-corp.com,Operations
+EMP-1272,Emma Rossi,emma.rossi@acme-corp.com,EMP-1233,amara.mehta@acme-corp.com,Operations
+EMP-1255,Sofia Bauer,sofia.bauer@acme-corp.com,EMP-1160,yara.bennett@acme-corp.com,Operations
+EMP-1327,Maya Patel,maya.patel@acme-corp.com,,emma.shah@acme-corp.com,Customer Success
+EMP-1342,Aarav Singh,aarav.singh2@acme-corp.com,,felix.adeyemi@acme-corp.com,Product
+EMP-1417,Uma Kowalski,uma.kowalski@acme-corp.com,EMP-1293,,Customer Success
+EMP-1008,Abena Nakamura,abena.nakamura@acme-corp.com,EMP-1455,elif.dubois@acme-corp.com,Operations
+EMP-1030,Chen Patel,chen.patel@acme-corp.com,EMP-1403,,Operations
+EMP-1425,Kai Reed,kai.reed@acme-corp.com,,rosa.nguyen2@acme-corp.com,Customer Success
+EMP-1436,Maya Mehta,maya.mehta@acme-corp.com,EMP-1438,,Operations
+EMP-1361,Chen Nakamura,chen.nakamura@acme-corp.com,,emma.shah@acme-corp.com,Customer Success
+EMP-1116,Yara Kim,yara.kim@acme-corp.com,EMP-1103,,Product
+EMP-1210,Quinn Bennett,quinn.bennett@acme-corp.com,EMP-1233,,Operations
+EMP-1443,Rosa Ito,rosa.ito@acme-corp.com,,abena.varga@acme-corp.com,Customer Success
+EMP-1421,Ines Singh,ines.singh2@acme-corp.com,EMP-1013,,Customer Success
+EMP-1051,Priya Jensen,priya.jensen@acme-corp.com,EMP-1031,farah.singh@acme-corp.com,
+EMP-1112,Nadia Ito,nadia.ito2@acme-corp.com,EMP-1044,,Product
+EMP-1318,Aarav Costa,aarav.costa@acme-corp.com,EMP-1000,abena.varga@acme-corp.com,Customer Success
+EMP-1090,Ines Moreau,ines.moreau@acme-corp.com,EMP-1319,vera.ito@acme-corp.com,Customer Success
+EMP-1102,Noah Rossi,noah.rossi@acme-corp.com,EMP-1293,,Customer Success
+EMP-1322,Kai Quinn,kai.quinn@acme-corp.com,EMP-1352,,Operations
+EMP-1187,Uma Moreau,uma.moreau@acme-corp.com,,lena.turner@acme-corp.com,Product
+EMP-1487,Ana Nakamura,ana.nakamura@acme-corp.com,EMP-1423,,Customer Success
+EMP-1017,Chen Kim,chen.kim2@acme-corp.com,EMP-1403,,Operations
+EMP-1139,Noah Bauer,noah.bauer2@acme-corp.com,EMP-1044,isaac.turner@acme-corp.com,Product
+EMP-1472,Felix Lopez,felix.lopez@acme-corp.com,EMP-1402,,Operations
+EMP-1092,Quinn Silva,quinn.silva@acme-corp.com,EMP-1199,,Customer Success
+EMP-1172,Isaac Usman,isaac.usman@acme-corp.com,EMP-1291,ana.usman2@acme-corp.com,Operations
+EMP-1104,Ines Wong,ines.wong@acme-corp.com,,emma.sato@acme-corp.com,Operations
+EMP-1160,Yara Bennett,yara.bennett@acme-corp.com,EMP-1466,,Operations
+EMP-1312,Yara Lopez,yara.lopez@acme-corp.com,EMP-1319,,Customer Success
+EMP-1127,Mei Silva,mei.silva@acme-corp.com,,rosa.costa@acme.io,Customer Success
+EMP-1193,Nadia Ito,nadia.ito@acme-corp.com,EMP-1347,omar.patel@acme-corp.com,Operations
+EMP-1373,Arjun Varga,arjun.varga2@acme-corp.com,,amara.mehta@acme-corp.com,Operations
+EMP-1186,Isaac Bennett,isaac.bennett@acme-corp.com,EMP-1341,uma.ito@acme-corp.com,Product
+EMP-1398,Mei Garcia,mei.garcia@acme-corp.com,,kai.kowalski@acme-corp.com,Customer Success
+EMP-1174,Alex Gupta,alex.gupta@acme-corp.com,EMP-1499,,Customer Success
+EMP-1397,Grace Shah,grace.shah@acme-corp.com,EMP-1122,,Operations
+EMP-1130,Amara Usman,amara.usman@acme-corp.com,EMP-1482,,Operations
+EMP-1324,Diego Lopez,diego.lopez@acme-corp.com,,quinn.nakamura@acme-corp.com,Product
+EMP-1115,Vera Alvarez,vera.alvarez@acme-corp.com,EMP-1402,leo.sato@acme-corp.com,Operations
+EMP-1385,Bruno Okafor,bruno.okafor@acme-corp.com,,dana.zhang@acme-corp.com,Customer Success
+EMP-1401,Yara Schmidt,yara.schmidt2@acme-corp.com,,ravi.das@acme-corp.com,Product
+EMP-1345,Ava Bauer,ava.bauer2@acme-corp.com,EMP-1044,isaac.turner@acme-corp.com,Product
+EMP-1053,Emma Nakamura,emma.nakamura2@acme-corp.com,EMP-1044,,Product
+EMP-1304,Ava Silva,ava.silva@acme-corp.com,,bruno.okafor@acme-corp.com,Customer Success
+EMP-1336,Grace Nguyen,grace.nguyen2@acme-corp.com,EMP-1407,abena.nguyen@acme-corp.com,Customer Success
+EMP-1101,Priya Gupta,priya.gupta@acme-corp.com,EMP-1025,vera.bennett2@acme-corp.com,Customer Success
+EMP-1426,Alex Nguyen,alex.nguyen@acme-corp.com,EMP-1341,uma.ito@acme-corp.com,Product
+EMP-1359,Aarav Zhang,aarav.zhang@acme-corp.com,,hana.jensen@acme-corp.com,Customer Success
+EMP-1383,Nadia Park,nadia.park@acme-corp.com,,rosa.das@acme-corp.com,Customer Success
+EMP-1449,Arjun Das,arjun.das3@acme-corp.com,EMP-1308,,Operations
+EMP-1047,Nadia Shah,nadia.shah@acme-corp.com,EMP-1218,,Operations
+EMP-1282,Yara Silva,yara.silva@acme-corp.com,EMP-1122,,Operations
+EMP-1299,Sam Okafor,sam.okafor@acme-corp.com,EMP-1283,,Operations
+EMP-1408,Grace Bauer,grace.bauer@acme-corp.com,EMP-1199,,Customer Success
+EMP-1395,Tariq Zhang,tariq.zhang@acme-corp.com,EMP-1447,,Operations
+EMP-1431,Leo Reed,leo.reed@acme-corp.com,EMP-1308,,Operations
+EMP-1170,Aarav Adeyemi,aarav.adeyemi@acme-corp.com,,felix.singh@acme-corp.com,Operations
+EMP-1498,Priya Zhang,priya.zhang@acme-corp.com,EMP-1452,,Customer Success
+EMP-1035,Abena Ito,abena.ito@acme-corp.com,EMP-1292,,Customer Success
+EMP-1142,Mei Nguyen,mei.nguyen2@acme-corp.com,EMP-1435,,Customer Success
+EMP-1349,Kai Nguyen,kai.nguyen@acme-corp.com,EMP-1367,,Customer Success
+EMP-1157,Ana Alvarez,ana.alvarez@acme-corp.com,,yara.wong@acme-corp.com,Operations
+EMP-1191,Elif Alvarez,elif.alvarez@acme-corp.com,EMP-1376,diego.kim@acme-corp.com,Operations
+EMP-1064,Aarav Moreau,aarav.moreau@acme-corp.com,EMP-1177,tariq.haddad@acme-corp.com,Customer Success
+EMP-1474,Omar Ellis,omar.ellis@acme-corp.com,EMP-1149,,Customer Success
+EMP-1000,Abena Varga,abena.varga@acme-corp.com,EMP-1259,,Customer Success
+EMP-1183,Elif Schmidt,elif.schmidt@acme-corp.com,EMP-1203,yara.wong@acme-corp.com,Operations
+EMP-1352,Arjun Bauer,arjun.bauer@acme-corp.com,EMP-1403,grace.bennett@acme-corp.com,Operations
+EMP-1211,Grace Mehta,grace.mehta@acme-corp.com,EMP-1195,nadia.varga@acme-corp.com,Operations
+EMP-1152,Zoe Fischer,zoe.fischer@acme-corp.com,EMP-1025,,Customer Success
+EMP-1486,Mei Singh,mei.singh@acme-corp.com,EMP-1323,,Customer Success
+EMP-1492,Elif Alvarez,elif.alvarez2@acme-corp.com,EMP-1146,,Customer Success
+EMP-1063,Felix Ellis,felix.ellis2@acme-corp.com,EMP-1413,,Customer Success
+EMP-1141,Ava Das,ava.das@acme-corp.com,,hana.jensen@acme-corp.com,Customer Success
+EMP-1420,Kai Fischer,kai.fischer@acme-corp.com,EMP-1477,,Operations
+EMP-1268,Jonas Zhang,jonas.zhang@acme-corp.com,,omar.par@acme-corp.com,Operations
+EMP-1026,Arjun Sato,arjun.sato@acme-corp.com,,zoe.haddad@acme-corp.com,Operations
+EMP-1096,Diego Rossi,diego.rossi@acme-corp.com,EMP-1245,,Operations
+EMP-1415,Omar Haddad,omar.haddad2@acme-corp.com,EMP-1025,vera.bennett2@acme-corp.com,Customer Success
+EMP-1083,Chen Bauer,chen.bauer@acme-corp.com,EMP-1025,,Customer Success
+EMP-1302,Alex Dubois,alex.dubois@acme-corp.com,EMP-1140,,Customer Success
+EMP-1462,Dana Bauer,dana.bauer@acme-corp.com,,alex.dubois@acme-corp.com,Customer Success
+EMP-1201,Farah Sato,farah.sato@acme-corp.com,EMP-1435,,Customer Success
+EMP-1295,Aarav Kim,aarav.kim2@acme-corp.com,EMP-1224,,Customer Success
+EMP-1165,Lena Singh,lena.singh@acme-corp.com,,bruno.quinn@acme-corp.com,Sales
+EMP-1105,Ravi Nguyen,ravi.nguyen@acme-corp.com,,wei.usman@acme-corp.com,Customer Success
+EMP-1180,Aarav Park,aarav.park@acme-corp.com,EMP-1441,omar.dubois@acme-corp.com,Operations
+EMP-1411,Omar Haddad,omar.haddad@acme-corp.com,EMP-1096,diego.rossi@acme-corp.com,Operations
+EMP-1435,Felix Ito,felix.ito@acme-corp.com,EMP-1182,,Customer Success
+EMP-1086,Leo Adeyemi,leo.adeyemi2@acme-corp.com,EMP-1441,omar.dubois@acme-corp.com,Operations
+EMP-1391,Sofia Usman,sofia.usman@acme-corp.com,,ava.costa@acme-corp.com,Customer Success
+EMP-1467,Amara Das,amara.das@acme-corp.com,EMP-1121,ravi.nakamura@acme-corp.com,Customer Success
+EMP-1095,Quinn Lopez,quinn.lopez@acme-corp.com,EMP-1121,,Customer Success
+EMP-1473,Sam Moreau,sam.moreau@acme-corp.com,EMP-1146,,Customer Success
+ EMP-1119,Yara Haddad,  YARA.HADDAD@ACME-CORP.COM ,EMP-1031,farah.singh@acme-corp.com,Engineering
+EMP-1308,Chen Usman,chen.usman@acme-corp.com,EMP-1320,nadia.gupta@acme-corp.com,Operations
+EMP-1254,Nadia Costa,nadia.costa@acme-corp.com,,arjun.kim@acme-corp.com,Operations
+EMP-1354,Ravi Silva,ravi.silva@acme-corp.com,EMP-1032,felix.adeyemi@acme-corp.com,Product
+EMP-1245,Ravi Chen,ravi.chen@acme-corp.com,EMP-1096,,Operations
+EMP-1306,Aarav Bennett,aarav.bennett@acme-corp.com,EMP-1138,,Customer Success
+EMP-1176,Tariq Gupta,tariq.gupta@acme-corp.com,EMP-1253,,Operations
+EMP-1357,Hana Mehta,hana.mehta@acme-corp.com,EMP-1319,,Customer Success
+EMP-1491,Noah Tanaka,noah.tanaka@acme-corp.com,EMP-1187,,Product
+EMP-1098,Felix Alvarez,felix.alvarez@acme-corp.com,EMP-1146,zoe.kim2@acme-corp.com,Customer Success
+EMP-1220,Mei Ellis,mei.ellis@acme-corp.com,EMP-1146,,Customer Success
+EMP-1087,Lena Mehta,lena.mehta@acme-corp.com,EMP-1442,,Customer Success
+EMP-1056,Dana Ito,dana.ito@acme-corp.com,,alex.park@acme-corp.com,Customer Success
+EMP-1350,Quinn Adeyemi,quinn.adeyemi@acme-corp.com,EMP-1291,,Operations
+EMP-1346,Uma Jensen,uma.jensen@acme-corp.com,,uma.ito@acme-corp.com,Product
+EMP-1039,Maya Bennett,maya.bennett@acme-corp.com,,emma.rospsi2@acme-corp.com,Customer Success
+EMP-1071,Grace Quinn,grace.quinn@acme-corp.com,EMP-1441,,Operations
+EMP-1085,Maya Varga,maya.varga@acme-corp.com,,farah.singh@acme-corp.com,Engineering
+EMP-1121,Ravi Nakamura,ravi.nakamura@acme-corp.com,EMP-1000,,
+EMP-1328,Emma Tanaka,emma.tanaka@acme-corp.com,EMP-1100,maya.park@acme-corp.com,Operations
+EMP-1040,Ava Ellis,ava.ellis@acme-corp.com,EMP-1218,zoe.haddad@acme-corp.com,Operations
+EMP-1265,Jonas Kim,jonas.kim@acme-corp.com,EMP-1458,,Customer Success
+EMP-1334,Ana Alvarez,ana.alvarez2@acme-corp.com,EMP-1233,amara.mehta@acme-corp.com,Operations
+EMP-1036,Ava Zhang,ava.zhang@acme-corp.com,EMP-1341,uma.ito@acme-corp.com,Product
+EMP-1171,Rosa Garcia,rosa.garcia@acme-corp.com,EMP-1267,,Sales
+EMP-1340,Sam Dubois,sam.dubois@acme-corp.com,EMP-1387,wei.varga@acme-corp.com,Customer Success
+EMP-1356,Jonas Dubois,jonas.dubois@acme-corp.com,EMP-1284,,Operations
+EMP-1310,Nadia Bauer,nadia.bauer2@acme-corp.com,EMP-1499,,Customer Success
+EMP-1337,Diego Patel,diego.patel@acme-corp.com,EMP-1149,,Customer Success
+EMP-1079,Yara Bennett,yara.bennett2@acme-corp.com,,alex.park@acme-corp.com,Customer Success
+EMP-1123,Rosa Quinn,rosa.quinn@acme-corp.com,,leo.sato@acme-corp.com,Operations
+EMP-1081,Maya Haddad,maya.haddad@acme-corp.com,EMP-1199,,Customer Success
+EMP-1298,Omar Reed,omar.reed@acme-corp.com,EMP-1310,,Customer Success
+EMP-1205,Felix Kowalski,felix.kowalski@acme-corp.com,,felix.ito@acme-corp.com,Customer Success
+EMP-1285,Ravi Das,ravi.das@acme-corp.com,EMP-1140,,Product
+EMP-1059,Tariq Quinn,tariq.quinn@acme-corp.com,EMP-1323,mei.nguyen@acme-corp.com,Customer Success
+EMP-1370,Ana Costa,ana.costa@acme-corp.com,EMP-1218,,Operations
+EMP-1321,Wei Usman,wei.usman@acme-corp.com,EMP-1075,rosa.das@acme-corp.com,Customer Success
+EMP-1338,Rosa Nguyen,rosa.nguyen@acme-corp.com,EMP-1146,zoe.kim2@acme-corp.com,Customer Success
+EMP-1089,Omar Sato,omar.sato@acme-corp.com,EMP-1450,,Operations
+EMP-1478,Vera Bennett,vera.bennett@acme-corp.com,EMP-103,,Operations
+EMP-1243,Wei Fischer,wei.fischer@acme-corp.com,EMP-1463,emma.shah@acme-corp.com,Customer Success
+EMP-1479,Ines Tanaka,ines.tanaka@acme-corp.com,EMP-1220,mei.ellis@acme-corp.com,Customer Success
+EMP-1375,Hana Costa,hana.costa3@acme-corp.com,EMP-1018,,Customer Success
+EMP-1021,Isaac Ellis,isaac.ellis@acme-corp.com,EMP-1407,,Customer Success
+EMP-1049,Leo Schmidt,leo.schmidt@acme-corp.com,,zoe.kim2@acme-corp.com,Customer Success
+EMP-1444,Amara Jensen,amara.jensen@acme-corp.com,,mei.ellid@acme-corp.com,Customer Success
+EMP-1454,Bruno Jensen,bruno.jensen@acme-corp.com,,abena.nakamura@acme-corp.com,Operations
+EMP-1057,Elif Varga,elif.varga@acme-corp.com,EMP-1032,,Product
+EMP-1240,Nadia Varga,nadia.varga2@acme-corp.com,,chen.kim@acme-corp.com,Operations
+EMP-1072,Wei Schmidt,wei.schmidt@acme-corp.com,EMP-1485,priya.moreau@acme-corp.com,Sales
+EMP-1427,Ava Lopez,ava.lopez@acme-corp.com,EMP-1013,hana.jensen@acme-corp.com,Customer Success
+EMP-1305,Emma Lopez,emma.lopez@acme-corp.com,EMP-1031,,Engineering
+EMP-1162,Dana Wong,dana.wong@acme-corp.com,EMP-1025,,Customer Success
+EMP-1283,Vera Chen,vera.chen@acme-corp.com,EMP-1455,,Operations
+EMP-1333,Ava Kowalski,ava.kowalski@acme-corp.com,,ravi.nakamura@acme-corp.com,Customer Success
+EMP-1419,Zoe Rossi,zoe.rossi@acme-corp.com,EMP-1308,chen.usman@acme-corp.com,Operations
+EMP-1153,Tariq Gupta,tariq.gupta2@acme-corp.com,,leo.sato@acme-corp.com,Operations
+EMP-1362,Quinn Usman,quinn.usman@acme-corp.com,,sam.shah@acme-corp.com,Operations
+EMP-1475,Alex Rossi,alex.rossi2@acme-corp.com,EMP-1195,,Operations
+EMP-1195,Nadia Varga,nadia.varga@acme-corp.com,EMP-1284,,Operations
+EMP-1118,Leo Ito,leo.ito@acme-corp.com,EMP-1352,,Operations
+EMP-1252,Rosa Costa,rosa.costa@acme-corp.com,EMP-1310,,Customer Success
+EMP-1377,Dana Nakamura,dana.nakamura@acme-corp.com,,abena.nguyen@acme-corp.com,Customer Success
+EMP-1284,Omar Park,omar.park@acme-corp.com,EMP-1450,,Operations
+EMP-1286,Jonas Jensen,jonas.jensen@acme-corp.com,EMP-1096,,Operations
+EMP-1307,Felix Nguyen,felix.nguyen@acme-corp.com,EMP-1158,,Customer Success
+EMP-1263,Felix Ellis,felix.ellis3@acme-corp.com,EMP-1149,,Customer Success
+EMP-1439,Felix Tanaka,felix.tanaka@acme-corp.com,EMP-1242,,Operations
+EMP-1313,Omar Adeyemi,omar.adeyemi@acme-corp.com,,quinn.nakamura@acme-corp.com,Product

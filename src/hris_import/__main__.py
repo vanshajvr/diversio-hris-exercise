@@ -1,5 +1,8 @@
 """
-Command line report: python -m hris_import report org.csv [--json]
+Command line entry point:
+  hris-import report org.csv [--json]        data-quality and org-health metrics
+  hris-import generate out.csv [--size 500]  synthetic org with labelled corruptions
+  hris-import benchmark [--seeds 20]         score the validator against synthetic orgs
 """
 
 
@@ -9,8 +12,10 @@ import sys
 from dataclasses import asdict
 from pathlib import Path
 
+from .evaluation import format_benchmark, run_benchmark
 from .metrics import OrgMetrics, compute_metrics
 from .pipeline import run_import_preview
+from .synthetic import generate_org
 
 
 def _pct(rate:float)->str:
@@ -46,14 +51,7 @@ def format_report(m:OrgMetrics)->str:
     ]
     return "\n".join(lines)
 
-def main(argv:list[str]|None=None)->int:
-    parser=argparse.ArgumentParser(prog="hris-import",description="Validate an HRIS CSV and report org-health metrics.")
-    sub=parser.add_subparsers(dest="command",required=True)
-    report=sub.add_parser("report",help="print data-quality and org-health metrics for a CSV")
-    report.add_argument("csv",type=Path)
-    report.add_argument("--json",action="store_true",help="print metrics as JSON instead of text")
-    args=parser.parse_args(argv)
-
+def _report(args)->int:
     result=run_import_preview(args.csv.read_bytes())
     file_errors=[i for i in result.issues if i.row_number==0]
     if file_errors:
@@ -63,6 +61,45 @@ def main(argv:list[str]|None=None)->int:
     metrics=compute_metrics(result)
     print(json.dumps(asdict(metrics),indent=2) if args.json else format_report(metrics))
     return 0
+
+def _generate(args)->int:
+    org=generate_org(args.size,seed=args.seed,corruption_rate=args.corruption_rate,id_density=args.id_density)
+    args.out.write_bytes(org.csv_bytes)
+    truth=args.out.with_name(args.out.stem+"_truth.json")
+    truth.write_text(json.dumps([asdict(c) for c in org.corruptions],indent=2)+"\n")
+    print(f"Wrote {args.out} (a {args.size}-person org) and {truth} ({len(org.corruptions)} labelled corruptions)")
+    return 0
+
+def _benchmark(args)->int:
+    result=run_benchmark(args.size,seeds=args.seeds,densities=tuple(args.densities))
+    print(format_benchmark(result))
+    return 0
+
+def main(argv:list[str]|None=None)->int:
+    parser=argparse.ArgumentParser(prog="hris-import",description="Validate an HRIS CSV and report org-health metrics.")
+    sub=parser.add_subparsers(dest="command",required=True)
+
+    report=sub.add_parser("report",help="print data-quality and org-health metrics for a CSV")
+    report.add_argument("csv",type=Path)
+    report.add_argument("--json",action="store_true",help="print metrics as JSON instead of text")
+    report.set_defaults(handler=_report)
+
+    generate=sub.add_parser("generate",help="write a synthetic org CSV with labelled corruptions")
+    generate.add_argument("out",type=Path,help="CSV path; ground truth goes next to it as <name>_truth.json")
+    generate.add_argument("--size",type=int,default=500)
+    generate.add_argument("--seed",type=int,default=0)
+    generate.add_argument("--corruption-rate",type=float,default=0.01,help="share of rows per corruption kind")
+    generate.add_argument("--id-density",type=float,default=1.0,help="share of the id range in use (1.0 = sequential)")
+    generate.set_defaults(handler=_generate)
+
+    bench=sub.add_parser("benchmark",help="score the validator against many synthetic orgs")
+    bench.add_argument("--size",type=int,default=500)
+    bench.add_argument("--seeds",type=int,default=20)
+    bench.add_argument("--densities",type=float,nargs="+",default=[1.0,0.5,0.1])
+    bench.set_defaults(handler=_benchmark)
+
+    args=parser.parse_args(argv)
+    return args.handler(args)
 
 if __name__=="__main__":
     sys.exit(main())

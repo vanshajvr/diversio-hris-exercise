@@ -9,7 +9,7 @@ pip install -e ".[dev]"
 uvicorn hris_import.web:app --reload
 ```
 
-Open http://127.0.0.1:8000 and upload a CSV (try `sample_hris.csv`).
+Open http://127.0.0.1:8000 and upload a CSV (try `data/sample_hris.csv`).
 
 ## Tests and lint
 
@@ -21,12 +21,23 @@ ruff check .
 ## Org-health report
 
 ```bash
-hris-import report sample_hris.csv          # text report
-hris-import report sample_hris.csv --json   # machine-readable
+hris-import report data/sample_hris.csv        # text report
+hris-import report data/sample_hris.csv --json   # machine-readable
 ```
 
 The report covers a data quality score, the import funnel, org depth and layers, span of control,
 largest orgs, a department breakdown and issue counts by code.
+
+## Synthetic data and detection benchmark
+
+```bash
+hris-import generate data/org.csv --size 500 --seed 42   # messy org + labelled ground truth
+hris-import benchmark --seeds 100                        # score the validator on 300 orgs
+```
+
+The validator flags every detectable corruption with the right code, with zero false alarms across 150,000 rows.
+The benchmark also found a blind spot: with sequential IDs, about 1 in 4 `manager_id` typos lands on another
+real employee and imports silently. Write-up: [docs/detection-benchmark.md](docs/detection-benchmark.md).
 
 ## Framework choice
 

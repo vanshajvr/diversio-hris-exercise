@@ -1,5 +1,4 @@
 import json
-import random
 from pathlib import Path
 
 import pytest
@@ -7,9 +6,10 @@ import pytest
 from hris_import.__main__ import main
 from hris_import.metrics import compute_metrics
 from hris_import.pipeline import run_import_preview
+from hris_import.synthetic import generate_org
 
 HEADER="employee_id,employee_name,email,manager_id,manager_email,department\n"
-SAMPLE=Path(__file__).resolve().parents[1]/"sample_hris.csv"
+SAMPLE=Path(__file__).resolve().parents[1]/"data"/"sample_hris.csv"
 
 def make_csv(rows:str)->bytes:
     return (HEADER+rows).encode('utf-8')
@@ -84,22 +84,7 @@ def test_unparseable_file_scores_zero():
     assert m.layers==0
 
 
-def random_org(n:int,seed:int)->bytes:
-
-    #a random tree plus deliberate noise: broken refs, a 3-cycle, a duplicate id and blank departments.
-
-    rng=random.Random(seed)
-    depts=["Eng","Sales","Ops","People",""]
-    rows=["E0,Root,e0@co.com,,,Exec"]
-    for i in range(1,n):
-        mgr=f"E{rng.randrange(i)}" if rng.random()>0.03 else "GHOST"
-        rows.append(f"E{i},Emp {i},e{i}@co.com,{mgr},,{rng.choice(depts)}")
-    rows+=["L1,Loop,l1@co.com,L3,,Ops","L2,Loop,l2@co.com,L1,,Ops","L3,Loop,l3@co.com,L2,,Ops",
-           "L4,Under Loop,l4@co.com,L1,,Ops","E5,Dup,dup@co.com,,,Ops"]
-    return make_csv("\n".join(rows)+"\n")
-
-
-@pytest.mark.parametrize("csv_bytes",[SAMPLE.read_bytes(),SMALL_ORG,random_org(2000,seed=7)],
+@pytest.mark.parametrize("csv_bytes",[SAMPLE.read_bytes(),SMALL_ORG,generate_org(2000,seed=7).csv_bytes],
                          ids=["sample","small","random-2000"])
 def test_metrics_are_internally_consistent(csv_bytes):
 
