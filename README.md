@@ -1,6 +1,6 @@
 # Diversio SDE Intern Project: HRIS Import Validator & Org-Health Analytics
 
-[![CI](https://github.com/vanshajvr/diversio-hris-exercise/actions/workflows/ci.yml/badge.svg)](https://github.com/vanshajvr/diversio-hris-exercise/actions/workflows/ci.yml)
+[![CI](https://github.com/vanshajvr/diversio-sde-intern-project/actions/workflows/ci.yml/badge.svg)](https://github.com/vanshajvr/diversio-sde-intern-project/actions/workflows/ci.yml)
 
 Validates employee CSV exports from an HRIS, measures how healthy the resulting org chart is, and
 helps an HR admin fix broken manager references. The suggested fixes have a **measured precision**,
