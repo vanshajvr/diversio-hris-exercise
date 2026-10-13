@@ -1,8 +1,5 @@
-import sys
-import os
-sys.path.insert(0,os.path.join(os.path.dirname(__file__),".."))
-
-from pipeline import run_import_preview, MAX_UPLOAD_BYTES
+from hris_import.models import IssueCode, Severity
+from hris_import.pipeline import MAX_UPLOAD_BYTES, run_import_preview
 
 HEADER="employee_id,employee_name,email,manager_id,manager_email,department\n"
 
@@ -10,7 +7,7 @@ def make_csv(rows:str,header:str=HEADER)->bytes:
     return (header+rows).encode('utf-8')
 
 def messages(result)->list[str]:
-    return [e.message for e in result.errors]
+    return [e.message for e in result.issues]
 
 
 def test_manager_email_matches_regardless_of_case():
@@ -24,7 +21,7 @@ def test_manager_email_matches_regardless_of_case():
     )
     result=run_import_preview(csv_bytes)
 
-    assert result.errors==[]
+    assert result.issues==[]
     assert result.manager_report_counts=={"E1":1}
 
 
@@ -33,6 +30,7 @@ def test_missing_email_is_rejected():
 
     assert result.accepted_employees==[]
     assert messages(result)==["Missing required email."]
+    assert [(i.code,i.severity) for i in result.issues]==[(IssueCode.MISSING_EMAIL,Severity.ERROR)]
 
 
 def test_missing_employee_id_is_rejected():
@@ -46,7 +44,7 @@ def test_header_whitespace_and_case_are_normalised():
     header=" Employee_ID ,employee_name, EMAIL ,manager_id,manager_email,department\n"
     result=run_import_preview(make_csv("E1,Alice,alice@co.com,,,Eng\n",header))
 
-    assert result.errors==[]
+    assert result.issues==[]
     assert [e.employee_id for e in result.accepted_employees]==["E1"]
 
 
@@ -54,13 +52,14 @@ def test_missing_columns_reported_as_file_error():
     result=run_import_preview(b"employee_id,email\nE1,a@co.com\n")
 
     assert result.total_rows==0
+    assert result.issues[0].code==IssueCode.FILE_MISSING_COLUMNS
     assert messages(result)==["Missing required columns: department, employee_name, manager_email, manager_id"]
 
 
 def test_utf8_bom_is_stripped():
     result=run_import_preview(b"\xef\xbb\xbf"+make_csv("E1,Alice,alice@co.com,,,Eng\n"))
 
-    assert result.errors==[]
+    assert result.issues==[]
     assert len(result.accepted_employees)==1
 
 
@@ -69,6 +68,7 @@ def test_non_utf8_file_reported_as_file_error():
     result=run_import_preview(latin1_bytes)
 
     assert messages(result)==["File is not valid UTF-8 text."]
+    assert result.issues[0].code==IssueCode.FILE_NOT_UTF8
 
 
 def test_row_numbers_follow_source_lines_with_multiline_fields():
@@ -81,7 +81,7 @@ def test_row_numbers_follow_source_lines_with_multiline_fields():
     )
     result=run_import_preview(csv_bytes)
 
-    assert [(e.row_number,e.employee_id) for e in result.errors]==[(4,"E2")]
+    assert [(e.row_number,e.employee_id) for e in result.issues]==[(4,"E2")]
 
 
 def test_blank_lines_are_skipped_without_shifting_row_numbers():
@@ -94,7 +94,7 @@ def test_blank_lines_are_skipped_without_shifting_row_numbers():
     result=run_import_preview(csv_bytes)
 
     assert result.total_rows==2
-    assert [e.row_number for e in result.errors]==[5]
+    assert [e.row_number for e in result.issues]==[5]
 
 
 def test_self_management_is_an_error():
@@ -108,6 +108,7 @@ def test_unresolved_manager_is_not_a_root():
     result=run_import_preview(make_csv("E1,Alice,alice@co.com,E404,,Eng\n"))
 
     assert messages(result)==["Manager reference could not be found."]
+    assert [(i.code,i.severity) for i in result.issues]==[(IssueCode.MANAGER_NOT_FOUND,Severity.WARNING)]
     assert result.roots==[]
     assert len(result.accepted_employees)==1
 
@@ -116,7 +117,7 @@ def test_oversized_upload_is_rejected_before_parsing():
     result=run_import_preview(b"x"*(MAX_UPLOAD_BYTES+1))
 
     assert result.total_rows==0
-    assert "larger than" in messages(result)[0]
+    assert result.issues[0].code==IssueCode.FILE_TOO_LARGE
 
 
 def test_output_order_is_deterministic():
@@ -133,4 +134,4 @@ def test_output_order_is_deterministic():
 
     assert [r.employee_id for r in result.roots]==["A1","Z1"]
     assert list(result.manager_report_counts)==["Z1","A1"] #most reports first
-    assert [e.row_number for e in result.errors]==[7,8] #sorted by row, not by pass
+    assert [e.row_number for e in result.issues]==[7,8] #sorted by row, not by pass

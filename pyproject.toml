@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hris-import"
+version = "0.2.0"
+description = "Diversio SDE Intern Project: validate HRIS employee CSVs and analyse reporting hierarchies"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Vanshaj Verma" }]
+dependencies = [
+    "fastapi==0.141.1",
+    "uvicorn==0.52.4",
+    "python-multipart==0.0.32",
+    "jinja2==3.1.6",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.1.1",
+    "httpx==0.28.1",
+    "ruff==0.17.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+hris_import = ["templates/*.html"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B", "UP"]

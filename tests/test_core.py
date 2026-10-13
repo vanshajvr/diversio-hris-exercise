@@ -1,8 +1,5 @@
-import sys
-import os
-sys.path.insert(0,os.path.join(os.path.dirname(__file__),".."))
-
-from pipeline import run_import_preview
+from hris_import.models import IssueCode, Severity
+from hris_import.pipeline import run_import_preview
 
 HEADER="employee_id,employee_name,email,manager_id,manager_email,department\n"
 
@@ -42,6 +39,7 @@ def test_reporting_cycle_is_detected_precisely():
 
     assert result.cyclic_employee_ids=={"A","B","C"}
     assert "D" not in result.cyclic_employee_ids
+    assert {i.employee_id for i in result.issues if i.code==IssueCode.REPORTING_CYCLE}=={"A","B","C"}
 
 
 def test_duplicate_employee_id_is_rejected_and_excluded_from_hierarchy():
@@ -57,7 +55,13 @@ def test_duplicate_employee_id_is_rejected_and_excluded_from_hierarchy():
 
     result=run_import_preview(csv_bytes)
 
-    assert len(result.errors)==3
+    #both duplicates are rejected; E2 is kept but its manager E1 no longer exists
+    assert [(i.employee_id,i.code) for i in result.issues]==[
+        ("E1",IssueCode.DUPLICATE_EMPLOYEE_ID),
+        ("E1",IssueCode.DUPLICATE_EMPLOYEE_ID),
+        ("E2",IssueCode.MANAGER_NOT_FOUND),
+    ]
+    assert [i.severity for i in result.issues]==[Severity.ERROR,Severity.ERROR,Severity.WARNING]
 
     accepted_ids={e.employee_id for e in result.accepted_employees}
     assert "E1" not in accepted_ids
@@ -75,7 +79,8 @@ def test_conflicting_manager_references_reported_as_error():
 
     result=run_import_preview(csv_bytes)
 
-    e1_errors=[e for e in result.errors if e.employee_id =="E1"]
+    e1_errors=[e for e in result.issues if e.employee_id =="E1"]
     assert len(e1_errors)==1
+    assert e1_errors[0].code==IssueCode.MANAGER_CONFLICT
     assert "different people" in e1_errors[0].message
     assert "E1" not in [r.employee_id for r in result.roots]

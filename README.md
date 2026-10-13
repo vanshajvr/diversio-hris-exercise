@@ -5,24 +5,24 @@
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-pip install fastapi uvicorn python-multipart jinja2 pytest
-uvicorn main:app --reload
+pip install -e ".[dev]"
+uvicorn hris_import.web:app --reload
 ```
 
-Open http://127.0.0.1:8000 and upload a CSV.
+Open http://127.0.0.1:8000 and upload a CSV (try `sample_hris.csv`).
 
-## Tests
+## Tests and lint
 
 ```bash
-pip install httpx  # only needed if you also run the FastAPI TestClient
-python3 -m pytest tests/ -v
+pytest -v
+ruff check .
 ```
 
 ## Framework choice
 
 - Django is preferred by the exercise, but I used FastAPI.
 - FastAPI is what I actually have hands-on experience with (built two backend projects on it).
-- The core logic (parsing, validation, graph) is plain Python with no framework dependency. The framework only affects `main.py` and the template rendering.
+- The core logic (parsing, validation, graph) is plain Python with no framework dependency. The framework only affects `web.py` and the template rendering.
 
 ## Assumptions
 

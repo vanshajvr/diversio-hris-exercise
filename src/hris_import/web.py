@@ -1,11 +1,14 @@
-from fastapi import FastAPI, UploadFile, Request
+from pathlib import Path
+
+from fastapi import FastAPI, Request, UploadFile
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-from pipeline import run_import_preview, MAX_UPLOAD_BYTES
+from .pipeline import MAX_UPLOAD_BYTES, run_import_preview
 
-app = FastAPI()
-templates = Jinja2Templates(directory="templates")
+app = FastAPI(title="HRIS Import Preview")
+# resolved from this file, so the app works no matter which directory uvicorn starts in
+templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
 
 
 @app.get("/", response_class=HTMLResponse)

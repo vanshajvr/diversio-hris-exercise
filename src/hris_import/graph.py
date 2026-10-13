@@ -9,7 +9,8 @@ instead of per-node recursion.
 """
 
 
-from models import Employee
+from .models import Employee
+
 
 def compute_roots(employees:list[Employee])->list[Employee]:
     

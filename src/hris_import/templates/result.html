@@ -15,15 +15,18 @@
     <ul>
       <li>Total source rows: {{ result.total_rows }}</li>
       <li>Accepted employees: {{ result.accepted_employees|length }}</li>
+      <li>Rejected rows: {{ result.rejected_rows }}</li>
       <li>Roots: {{ result.roots|length }}</li>
+      <li>Errors: {{ result.errors|length }} &middot; Warnings: {{ result.warnings|length }}</li>
     </ul>
 
-    <h2>Validation errors ({{ result.errors|length }})</h2>
-    {% if result.errors %}
+    <h2>Issues ({{ result.issues|length }})</h2>
+    <p><small>Errors reject the row (or the whole file, row 0). Warnings keep the row but leave it out of the hierarchy.</small></p>
+    {% if result.issues %}
       <table border="1" cellpadding="6">
-        <tr><th>Row</th><th>Employee ID</th><th>Message</th></tr>
-        {% for e in result.errors %}
-          <tr><td>{{ e.row_number }}</td><td>{{ e.employee_id }}</td><td>{{ e.message }}</td></tr>
+        <tr><th>Row</th><th>Employee ID</th><th>Severity</th><th>Code</th><th>Message</th></tr>
+        {% for e in result.issues %}
+          <tr><td>{{ e.row_number }}</td><td>{{ e.employee_id }}</td><td>{{ e.severity }}</td><td><code>{{ e.code }}</code></td><td>{{ e.message }}</td></tr>
         {% endfor %}
       </table>
     {% else %}

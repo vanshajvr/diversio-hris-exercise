@@ -6,13 +6,19 @@ Uses Python's csv module to handle quoted fields, commas in fields, etc correctl
 
 import csv
 import io
-from models import RawRow
+
+from .models import IssueCode, RawRow
 
 REQUIRED_HEADERS={"employee_id","employee_name","email","manager_id","manager_email","department"}
 
 
 class MalformedUploadError(Exception):
-    pass
+    def __init__(self,code:IssueCode,message:str):
+        super().__init__(message)
+        self.code=code
+
+def _cell(values:list[str],index:int)->str:
+    return values[index].strip() if index<len(values) else "" #short rows: missing trailing cells are blank
 
 def parse_csv(file_bytes:bytes) -> list[RawRow]:
     #so that utf-8-sig strips a BOM if present
@@ -20,7 +26,7 @@ def parse_csv(file_bytes:bytes) -> list[RawRow]:
     try:
         text=file_bytes.decode("utf-8-sig")
     except UnicodeDecodeError:
-        raise MalformedUploadError("File is not valid UTF-8 text.")
+        raise MalformedUploadError(IssueCode.FILE_NOT_UTF8,"File is not valid UTF-8 text.") from None
 
     #plain csv.reader instead of DictReader so that:
     #1. header names can be normalised (" Employee_ID " -> "employee_id") before lookup
@@ -30,15 +36,15 @@ def parse_csv(file_bytes:bytes) -> list[RawRow]:
     try:
         header=next(reader,None)
     except csv.Error as exc:
-        raise MalformedUploadError(f"Could not read header: {exc}")
+        raise MalformedUploadError(IssueCode.FILE_MALFORMED,f"Could not read header: {exc}") from exc
     if header is None:
-        raise MalformedUploadError("File appears to be empty.")
+        raise MalformedUploadError(IssueCode.FILE_EMPTY,"File appears to be empty.")
 
     columns=[h.strip().lower() for h in header]
     missing=REQUIRED_HEADERS-set(columns)
 
     if missing:
-        raise MalformedUploadError(f"Missing required columns: {', '.join(sorted(missing))}")
+        raise MalformedUploadError(IssueCode.FILE_MISSING_COLUMNS,f"Missing required columns: {', '.join(sorted(missing))}")
 
     col_index={name:columns.index(name) for name in REQUIRED_HEADERS}
 
@@ -50,22 +56,18 @@ def parse_csv(file_bytes:bytes) -> list[RawRow]:
         except StopIteration:
             break
         except csv.Error as exc:
-            raise MalformedUploadError(f"Line {start_line}: {exc}")
+            raise MalformedUploadError(IssueCode.FILE_MALFORMED,f"Line {start_line}: {exc}") from exc
 
         if not any(v.strip() for v in values):
             continue #blank line or a row of only commas
 
-        def get(col:str)->str:
-            i=col_index[col]
-            return values[i].strip() if i<len(values) else ""
-
         rows.append(RawRow(
             row_number=start_line,
-            employee_id=get("employee_id"),
-            employee_name=get("employee_name"),
-            email=get("email").lower(),
-            manager_id=get("manager_id"),
-            manager_email=get("manager_email").lower(),
-            department=get("department")
+            employee_id=_cell(values,col_index["employee_id"]),
+            employee_name=_cell(values,col_index["employee_name"]),
+            email=_cell(values,col_index["email"]).lower(),
+            manager_id=_cell(values,col_index["manager_id"]),
+            manager_email=_cell(values,col_index["manager_email"]).lower(),
+            department=_cell(values,col_index["department"])
         ))
     return rows
