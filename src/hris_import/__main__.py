@@ -2,7 +2,9 @@
 Command line entry point:
   hris-import report org.csv [--json]        data-quality and org-health metrics
   hris-import generate out.csv [--size 500]  synthetic org with labelled corruptions
+  hris-import suggest org.csv                suggested fixes for broken manager references
   hris-import benchmark [--seeds 20]         score the validator against synthetic orgs
+  hris-import benchmark --suggestions        score the suggested fixes instead
 """
 
 
@@ -12,9 +14,16 @@ import sys
 from dataclasses import asdict
 from pathlib import Path
 
-from .evaluation import format_benchmark, run_benchmark
+from .evaluation import (
+    DEFAULT_THRESHOLD,
+    collect_suggestion_outcomes,
+    format_benchmark,
+    format_suggestion_benchmark,
+    run_benchmark,
+)
 from .metrics import OrgMetrics, compute_metrics
 from .pipeline import run_import_preview
+from .suggestions import SuggestOptions, suggest_fixes
 from .synthetic import generate_org
 
 
@@ -70,9 +79,35 @@ def _generate(args)->int:
     print(f"Wrote {args.out} (a {args.size}-person org) and {truth} ({len(org.corruptions)} labelled corruptions)")
     return 0
 
+def _suggest(args)->int:
+    result=run_import_preview(args.csv.read_bytes())
+    suggestions=suggest_fixes(result)
+    if args.json:
+        print(json.dumps([asdict(s) for s in suggestions],indent=2))
+        return 0
+    if not suggestions:
+        print("No broken manager references.")
+    for s in suggestions:
+        if s.suggested_manager_id and s.confidence>=args.threshold:
+            verdict=f"-> {s.suggested_manager_id} ({s.confidence:.0%})"
+        elif s.suggested_manager_id:
+            verdict=f"?  {s.suggested_manager_id} ({s.confidence:.0%}, needs review)"
+        else:
+            verdict="-  no suggestion"
+        print(f"row {s.row_number:<5} {s.employee_id:<12} {verdict:<34} {s.explanation}")
+    return 0
+
 def _benchmark(args)->int:
-    result=run_benchmark(args.size,seeds=args.seeds,densities=tuple(args.densities))
-    print(format_benchmark(result))
+    densities=tuple(args.densities)
+    if not args.suggestions:
+        print(format_benchmark(run_benchmark(args.size,seeds=args.seeds,densities=densities)))
+        return 0
+    outcomes=collect_suggestion_outcomes(args.size,seeds=args.seeds,densities=densities)
+    ablations={name:collect_suggestion_outcomes(args.size,seeds=args.seeds,densities=densities,options=opts)
+               for name,opts in [("no department signal",SuggestOptions(department_signal=False)),
+                                 ("no missing-manager detection",SuggestOptions(detect_missing_manager=False)),
+                                 ("no typo tie-break",SuggestOptions(tiebreak=False))]}
+    print(format_suggestion_benchmark(outcomes,ablations))
     return 0
 
 def main(argv:list[str]|None=None)->int:
@@ -92,10 +127,18 @@ def main(argv:list[str]|None=None)->int:
     generate.add_argument("--id-density",type=float,default=1.0,help="share of the id range in use (1.0 = sequential)")
     generate.set_defaults(handler=_generate)
 
+    suggest=sub.add_parser("suggest",help="suggest fixes for broken manager references in a CSV")
+    suggest.add_argument("csv",type=Path)
+    suggest.add_argument("--threshold",type=float,default=DEFAULT_THRESHOLD,
+                         help="minimum confidence to propose a fix; lower ones are marked for review")
+    suggest.add_argument("--json",action="store_true")
+    suggest.set_defaults(handler=_suggest)
+
     bench=sub.add_parser("benchmark",help="score the validator against many synthetic orgs")
     bench.add_argument("--size",type=int,default=500)
     bench.add_argument("--seeds",type=int,default=20)
     bench.add_argument("--densities",type=float,nargs="+",default=[1.0,0.5,0.1])
+    bench.add_argument("--suggestions",action="store_true",help="benchmark suggested fixes instead of detection")
     bench.set_defaults(handler=_benchmark)
 
     args=parser.parse_args(argv)

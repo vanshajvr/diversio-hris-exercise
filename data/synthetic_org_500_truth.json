@@ -15,521 +15,226 @@
   },
   {
     "kind": "departed_manager",
-    "employee_id": "EMP-1381",
+    "employee_id": "EMP-1415",
     "field": "manager_id/manager_email",
-    "original": "EMP-1319",
-    "corrupted": "EMP-1319",
+    "original": "EMP-1025",
+    "corrupted": "EMP-1025",
     "true_manager_id": null,
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1381"
+      "EMP-1415"
     ],
     "ref_style": ""
   },
   {
     "kind": "departed_manager",
-    "employee_id": "EMP-1175",
+    "employee_id": "EMP-1362",
     "field": "manager_id/manager_email",
-    "original": "EMP-1319",
-    "corrupted": "EMP-1319",
+    "original": "EMP-1242",
+    "corrupted": "EMP-1242",
     "true_manager_id": null,
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1175"
+      "EMP-1362"
     ],
     "ref_style": ""
   },
   {
     "kind": "departed_manager",
-    "employee_id": "EMP-1312",
+    "employee_id": "EMP-1448",
     "field": "manager_id/manager_email",
-    "original": "EMP-1319",
-    "corrupted": "EMP-1319",
+    "original": "EMP-1031",
+    "corrupted": "EMP-1031",
     "true_manager_id": null,
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1312"
+      "EMP-1448"
     ],
     "ref_style": ""
   },
   {
     "kind": "departed_manager",
-    "employee_id": "EMP-1244",
+    "employee_id": "EMP-1203",
     "field": "manager_id/manager_email",
-    "original": "EMP-1319",
-    "corrupted": "EMP-1319",
+    "original": "EMP-1089",
+    "corrupted": "EMP-1089",
     "true_manager_id": null,
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1244"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1090",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1319",
-    "corrupted": "EMP-1319",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1090"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1357",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1319",
-    "corrupted": "EMP-1319",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1357"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1412",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1275",
-    "corrupted": "EMP-1275",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1412"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1237",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1275",
-    "corrupted": "EMP-1275",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1237"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1029",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1275",
-    "corrupted": "EMP-1275",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1029"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1217",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1458",
-    "corrupted": "EMP-1458",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1217"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1099",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1458",
-    "corrupted": "EMP-1458",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1099"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1173",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1458",
-    "corrupted": "EMP-1458",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1173"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1229",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1458",
-    "corrupted": "EMP-1458",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1229"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1265",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1458",
-    "corrupted": "EMP-1458",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1265"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1477",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1466",
-    "corrupted": "EMP-1466",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1477"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1403",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1466",
-    "corrupted": "EMP-1466",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1403"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1441",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1466",
-    "corrupted": "EMP-1466",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1441"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1160",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1466",
-    "corrupted": "EMP-1466",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1160"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1455",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1466",
-    "corrupted": "EMP-1466",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1455"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1294",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1075",
-    "corrupted": "EMP-1075",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1294"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1219",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1075",
-    "corrupted": "EMP-1075",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1219"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1453",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1075",
-    "corrupted": "EMP-1075",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1453"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1216",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1075",
-    "corrupted": "EMP-1075",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1216"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1383",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1075",
-    "corrupted": "EMP-1075",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1383"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "departed_manager",
-    "employee_id": "EMP-1321",
-    "field": "manager_id/manager_email",
-    "original": "EMP-1075",
-    "corrupted": "EMP-1075",
-    "true_manager_id": null,
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1321"
+      "EMP-1203"
     ],
     "ref_style": ""
   },
   {
     "kind": "duplicate_row",
-    "employee_id": "EMP-1006",
+    "employee_id": "EMP-1256",
     "field": "*",
     "original": "",
     "corrupted": "",
-    "true_manager_id": "EMP-1258",
+    "true_manager_id": "EMP-1452",
     "expected_issue": "DUPLICATE_EMPLOYEE_ID",
     "collides": false,
     "affected_ids": [
-      "EMP-1006"
+      "EMP-1256"
     ],
     "ref_style": ""
   },
   {
     "kind": "duplicate_row",
-    "employee_id": "EMP-1247",
+    "employee_id": "EMP-1456",
     "field": "*",
     "original": "",
     "corrupted": "",
-    "true_manager_id": "EMP-1191",
+    "true_manager_id": "EMP-1267",
     "expected_issue": "DUPLICATE_EMPLOYEE_ID",
     "collides": false,
     "affected_ids": [
-      "EMP-1247"
+      "EMP-1456"
     ],
     "ref_style": ""
   },
   {
     "kind": "duplicate_row",
-    "employee_id": "EMP-1050",
+    "employee_id": "EMP-1053",
     "field": "*",
     "original": "",
     "corrupted": "",
-    "true_manager_id": "EMP-1360",
+    "true_manager_id": "EMP-1044",
     "expected_issue": "DUPLICATE_EMPLOYEE_ID",
     "collides": false,
     "affected_ids": [
-      "EMP-1050"
+      "EMP-1053"
     ],
     "ref_style": ""
   },
   {
     "kind": "duplicate_row",
-    "employee_id": "EMP-1420",
+    "employee_id": "EMP-1471",
     "field": "*",
     "original": "",
     "corrupted": "",
-    "true_manager_id": "EMP-1477",
+    "true_manager_id": "EMP-1321",
     "expected_issue": "DUPLICATE_EMPLOYEE_ID",
     "collides": false,
     "affected_ids": [
-      "EMP-1420"
+      "EMP-1471"
     ],
     "ref_style": ""
   },
   {
     "kind": "duplicate_row",
-    "employee_id": "EMP-1414",
+    "employee_id": "EMP-1355",
     "field": "*",
     "original": "",
     "corrupted": "",
-    "true_manager_id": "EMP-1407",
+    "true_manager_id": "EMP-1000",
     "expected_issue": "DUPLICATE_EMPLOYEE_ID",
     "collides": false,
     "affected_ids": [
-      "EMP-1414"
+      "EMP-1355"
     ],
     "ref_style": ""
   },
   {
     "kind": "cycle_edge",
-    "employee_id": "EMP-1096",
-    "field": "manager_id",
-    "original": "EMP-1320",
-    "corrupted": "EMP-1245",
-    "true_manager_id": "EMP-1320",
-    "expected_issue": "REPORTING_CYCLE",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1096",
-      "EMP-1245"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "cycle_edge",
-    "employee_id": "EMP-1349",
-    "field": "manager_id",
-    "original": "EMP-1462",
-    "corrupted": "EMP-1367",
-    "true_manager_id": "EMP-1462",
-    "expected_issue": "REPORTING_CYCLE",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1349",
-      "EMP-1019",
-      "EMP-1367"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "cycle_edge",
-    "employee_id": "EMP-1199",
-    "field": "manager_id",
-    "original": "EMP-1413",
-    "corrupted": "EMP-1408",
-    "true_manager_id": "EMP-1413",
-    "expected_issue": "REPORTING_CYCLE",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1199",
-      "EMP-1408"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "cycle_edge",
-    "employee_id": "EMP-1442",
+    "employee_id": "EMP-1041",
     "field": "manager_id",
     "original": "EMP-1463",
-    "corrupted": "EMP-1087",
+    "corrupted": "EMP-1446",
     "true_manager_id": "EMP-1463",
     "expected_issue": "REPORTING_CYCLE",
     "collides": false,
     "affected_ids": [
-      "EMP-1442",
-      "EMP-1087"
+      "EMP-1041",
+      "EMP-1446"
     ],
     "ref_style": ""
   },
   {
     "kind": "cycle_edge",
-    "employee_id": "EMP-1000",
+    "employee_id": "EMP-1321",
     "field": "manager_id",
-    "original": "dana.zhang@acme-corp.com",
-    "corrupted": "EMP-1259",
-    "true_manager_id": "EMP-1149",
+    "original": "EMP-1075",
+    "corrupted": "EMP-1234",
+    "true_manager_id": "EMP-1075",
     "expected_issue": "REPORTING_CYCLE",
     "collides": false,
     "affected_ids": [
-      "EMP-1000",
-      "EMP-1259"
+      "EMP-1321",
+      "EMP-1234"
+    ],
+    "ref_style": ""
+  },
+  {
+    "kind": "cycle_edge",
+    "employee_id": "EMP-1435",
+    "field": "manager_id",
+    "original": "EMP-1182",
+    "corrupted": "EMP-1142",
+    "true_manager_id": "EMP-1182",
+    "expected_issue": "REPORTING_CYCLE",
+    "collides": false,
+    "affected_ids": [
+      "EMP-1435",
+      "EMP-1142"
+    ],
+    "ref_style": ""
+  },
+  {
+    "kind": "cycle_edge",
+    "employee_id": "EMP-1088",
+    "field": "manager_id",
+    "original": "EMP-1323",
+    "corrupted": "EMP-1314",
+    "true_manager_id": "EMP-1323",
+    "expected_issue": "REPORTING_CYCLE",
+    "collides": false,
+    "affected_ids": [
+      "EMP-1088",
+      "EMP-1314"
+    ],
+    "ref_style": ""
+  },
+  {
+    "kind": "cycle_edge",
+    "employee_id": "EMP-1482",
+    "field": "manager_id",
+    "original": "EMP-1284",
+    "corrupted": "EMP-1124",
+    "true_manager_id": "EMP-1284",
+    "expected_issue": "REPORTING_CYCLE",
+    "collides": false,
+    "affected_ids": [
+      "EMP-1482",
+      "EMP-1124"
     ],
     "ref_style": ""
   },
   {
     "kind": "id_typo",
-    "employee_id": "EMP-1167",
+    "employee_id": "EMP-1071",
     "field": "manager_id",
-    "original": "EMP-1385",
-    "corrupted": "EMP-3185",
-    "true_manager_id": "EMP-1385",
+    "original": "EMP-1441",
+    "corrupted": "EMP-141",
+    "true_manager_id": "EMP-1441",
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1167"
+      "EMP-1071"
     ],
     "ref_style": "id"
   },
   {
     "kind": "id_typo",
-    "employee_id": "EMP-1280",
+    "employee_id": "EMP-1265",
     "field": "manager_id",
-    "original": "EMP-1199",
-    "corrupted": "EMP-1195",
-    "true_manager_id": "EMP-1199",
+    "original": "EMP-1458",
+    "corrupted": "EMP-1485",
+    "true_manager_id": "EMP-1458",
     "expected_issue": null,
     "collides": true,
     "affected_ids": [],
@@ -537,159 +242,133 @@
   },
   {
     "kind": "id_typo",
-    "employee_id": "EMP-1478",
+    "employee_id": "EMP-1010",
     "field": "manager_id",
-    "original": "EMP-1403",
-    "corrupted": "EMP-103",
-    "true_manager_id": "EMP-1403",
+    "original": "EMP-1032",
+    "corrupted": "EMP-1031",
+    "true_manager_id": "EMP-1032",
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1478"
+      "EMP-1010"
+    ],
+    "ref_style": "both"
+  },
+  {
+    "kind": "id_typo",
+    "employee_id": "EMP-1458",
+    "field": "manager_id",
+    "original": "EMP-1349",
+    "corrupted": "EMP-13499",
+    "true_manager_id": "EMP-1349",
+    "expected_issue": "MANAGER_NOT_FOUND",
+    "collides": false,
+    "affected_ids": [
+      "EMP-1458"
     ],
     "ref_style": "id"
   },
   {
     "kind": "id_typo",
-    "employee_id": "EMP-1460",
+    "employee_id": "EMP-1120",
     "field": "manager_id",
-    "original": "EMP-1138",
-    "corrupted": "EMP-118",
-    "true_manager_id": "EMP-1138",
+    "original": "EMP-1483",
+    "corrupted": "EMP-1583",
+    "true_manager_id": "EMP-1483",
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1460"
+      "EMP-1120"
     ],
-    "ref_style": "id"
-  },
-  {
-    "kind": "id_typo",
-    "employee_id": "EMP-1351",
-    "field": "manager_id",
-    "original": "EMP-1403",
-    "corrupted": "EMP-1401",
-    "true_manager_id": "EMP-1403",
-    "expected_issue": null,
-    "collides": true,
-    "affected_ids": [],
-    "ref_style": "id"
+    "ref_style": "both"
   },
   {
     "kind": "id_format",
-    "employee_id": "EMP-1484",
+    "employee_id": "EMP-1154",
     "field": "manager_id",
-    "original": "EMP-1292",
-    "corrupted": "EMP 1292",
-    "true_manager_id": "EMP-1292",
+    "original": "EMP-1326",
+    "corrupted": "1326",
+    "true_manager_id": "EMP-1326",
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1484"
+      "EMP-1154"
     ],
     "ref_style": ""
   },
   {
     "kind": "id_format",
-    "employee_id": "EMP-1233",
+    "employee_id": "EMP-1427",
     "field": "manager_id",
-    "original": "EMP-1376",
-    "corrupted": "emp-1376",
-    "true_manager_id": "EMP-1376",
+    "original": "EMP-1013",
+    "corrupted": "EMP1013",
+    "true_manager_id": "EMP-1013",
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1233"
+      "EMP-1427"
     ],
     "ref_style": ""
   },
   {
     "kind": "id_format",
-    "employee_id": "EMP-1067",
+    "employee_id": "EMP-1364",
     "field": "manager_id",
-    "original": "EMP-1103",
-    "corrupted": "emp1103",
-    "true_manager_id": "EMP-1103",
+    "original": "EMP-1485",
+    "corrupted": "EMP1485",
+    "true_manager_id": "EMP-1485",
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1067"
+      "EMP-1364"
     ],
     "ref_style": ""
   },
   {
     "kind": "id_format",
-    "employee_id": "EMP-1192",
+    "employee_id": "EMP-1343",
     "field": "manager_id",
-    "original": "EMP-1402",
-    "corrupted": "EMP1402",
-    "true_manager_id": "EMP-1402",
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1192"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "id_format",
-    "employee_id": "EMP-1110",
-    "field": "manager_id",
-    "original": "EMP-1088",
-    "corrupted": "1088",
-    "true_manager_id": "EMP-1088",
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1110"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "email_typo",
-    "employee_id": "EMP-1048",
-    "field": "manager_email",
-    "original": "elif.shah@acme-corp.com",
-    "corrupted": "elifshah@acme-corp.com",
-    "true_manager_id": "EMP-1041",
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1048"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "email_typo",
-    "employee_id": "EMP-1268",
-    "field": "manager_email",
-    "original": "omar.park@acme-corp.com",
-    "corrupted": "omar.par@acme-corp.com",
+    "original": "EMP-1284",
+    "corrupted": "emp-1284",
     "true_manager_id": "EMP-1284",
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1268"
+      "EMP-1343"
     ],
     "ref_style": ""
   },
   {
-    "kind": "email_typo",
-    "employee_id": "EMP-1039",
-    "field": "manager_email",
-    "original": "emma.rossi2@acme-corp.com",
-    "corrupted": "emma.rospsi2@acme-corp.com",
-    "true_manager_id": "EMP-1199",
+    "kind": "id_format",
+    "employee_id": "EMP-1013",
+    "field": "manager_id",
+    "original": "EMP-1323",
+    "corrupted": "emp-1323",
+    "true_manager_id": "EMP-1323",
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1039"
+      "EMP-1013"
     ],
     "ref_style": ""
   },
   {
     "kind": "email_typo",
-    "employee_id": "EMP-1094",
+    "employee_id": "EMP-1342",
+    "field": "manager_email",
+    "original": "felix.adeyemi@acme-corp.com",
+    "corrupted": "felix.adpeyemi@acme-corp.com",
+    "true_manager_id": "EMP-1032",
+    "expected_issue": "MANAGER_NOT_FOUND",
+    "collides": false,
+    "affected_ids": [
+      "EMP-1342"
+    ],
+    "ref_style": ""
+  },
+  {
+    "kind": "email_typo",
+    "employee_id": "EMP-1153",
     "field": "manager_email",
     "original": "leo.sato@acme-corp.com",
     "corrupted": "leo.asto@acme-corp.com",
@@ -697,13 +376,13 @@
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1094"
+      "EMP-1153"
     ],
     "ref_style": ""
   },
   {
     "kind": "email_typo",
-    "employee_id": "EMP-1444",
+    "employee_id": "EMP-1136",
     "field": "manager_email",
     "original": "mei.ellis@acme-corp.com",
     "corrupted": "mei.ellid@acme-corp.com",
@@ -711,16 +390,16 @@
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1444"
+      "EMP-1136"
     ],
     "ref_style": ""
   },
   {
-    "kind": "email_domain",
+    "kind": "email_typo",
     "employee_id": "EMP-1144",
     "field": "manager_email",
     "original": "abena.mehta@acme-corp.com",
-    "corrupted": "abena.mehta@acme.io",
+    "corrupted": "abena.meuta@acme-corp.com",
     "true_manager_id": "EMP-1122",
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
@@ -730,137 +409,249 @@
     "ref_style": ""
   },
   {
-    "kind": "email_domain",
-    "employee_id": "EMP-1490",
+    "kind": "email_typo",
+    "employee_id": "EMP-1029",
     "field": "manager_email",
-    "original": "quinn.nakamura@acme-corp.com",
-    "corrupted": "quinn.nakamura@acme.io",
-    "true_manager_id": "EMP-1232",
+    "original": "emma.park@acme-corp.com",
+    "corrupted": "emm.apark@acme-corp.com",
+    "true_manager_id": "EMP-1275",
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1490"
-    ],
-    "ref_style": ""
-  },
-  {
-    "kind": "email_domain",
-    "employee_id": "EMP-1177",
-    "field": "manager_email",
-    "original": "nadia.bauer2@acme-corp.com",
-    "corrupted": "nadia.bauer2@acme.io",
-    "true_manager_id": "EMP-1310",
-    "expected_issue": "MANAGER_NOT_FOUND",
-    "collides": false,
-    "affected_ids": [
-      "EMP-1177"
+      "EMP-1029"
     ],
     "ref_style": ""
   },
   {
     "kind": "email_domain",
-    "employee_id": "EMP-1127",
+    "employee_id": "EMP-1425",
     "field": "manager_email",
-    "original": "rosa.costa@acme-corp.com",
-    "corrupted": "rosa.costa@acme.io",
-    "true_manager_id": "EMP-1252",
+    "original": "rosa.nguyen2@acme-corp.com",
+    "corrupted": "rosa.nguyen2@acme.io",
+    "true_manager_id": "EMP-1266",
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1127"
+      "EMP-1425"
     ],
     "ref_style": ""
   },
   {
     "kind": "email_domain",
-    "employee_id": "EMP-1450",
+    "employee_id": "EMP-1429",
     "field": "manager_email",
-    "original": "leo.mehta@acme-corp.com",
-    "corrupted": "leo.mehta@acme.io",
-    "true_manager_id": "EMP-1140",
+    "original": "elif.gupta@acme-corp.com",
+    "corrupted": "elif.gupta@acme.io",
+    "true_manager_id": "EMP-1207",
     "expected_issue": "MANAGER_NOT_FOUND",
     "collides": false,
     "affected_ids": [
-      "EMP-1450"
+      "EMP-1429"
+    ],
+    "ref_style": ""
+  },
+  {
+    "kind": "email_domain",
+    "employee_id": "EMP-1300",
+    "field": "manager_email",
+    "original": "diego.rossi@acme-corp.com",
+    "corrupted": "diego.rossi@acme.io",
+    "true_manager_id": "EMP-1096",
+    "expected_issue": "MANAGER_NOT_FOUND",
+    "collides": false,
+    "affected_ids": [
+      "EMP-1300"
+    ],
+    "ref_style": ""
+  },
+  {
+    "kind": "email_domain",
+    "employee_id": "EMP-1454",
+    "field": "manager_email",
+    "original": "abena.nakamura@acme-corp.com",
+    "corrupted": "abena.nakamura@acme.io",
+    "true_manager_id": "EMP-1008",
+    "expected_issue": "MANAGER_NOT_FOUND",
+    "collides": false,
+    "affected_ids": [
+      "EMP-1454"
+    ],
+    "ref_style": ""
+  },
+  {
+    "kind": "email_domain",
+    "employee_id": "EMP-1374",
+    "field": "manager_email",
+    "original": "wei.usman@acme-corp.com",
+    "corrupted": "wei.usman@acme.io",
+    "true_manager_id": "EMP-1321",
+    "expected_issue": "MANAGER_NOT_FOUND",
+    "collides": false,
+    "affected_ids": [
+      "EMP-1374"
     ],
     "ref_style": ""
   },
   {
     "kind": "email_mismatch",
-    "employee_id": "EMP-1290",
+    "employee_id": "EMP-1215",
     "field": "manager_email",
-    "original": "wei.varga@acme-corp.com",
-    "corrupted": "quinn.kowalski@acme-corp.com",
-    "true_manager_id": "EMP-1387",
+    "original": "lena.turner@acme-corp.com",
+    "corrupted": "hana.das@acme-corp.com",
+    "true_manager_id": "EMP-1103",
     "expected_issue": "MANAGER_CONFLICT",
     "collides": false,
     "affected_ids": [
-      "EMP-1290"
+      "EMP-1215"
     ],
     "ref_style": ""
   },
   {
     "kind": "email_mismatch",
-    "employee_id": "EMP-1281",
+    "employee_id": "EMP-1416",
     "field": "manager_email",
-    "original": "yara.bennett@acme-corp.com",
-    "corrupted": "quinn.adeyemi@acme-corp.com",
-    "true_manager_id": "EMP-1160",
+    "original": "bruno.quinn@acme-corp.com",
+    "corrupted": "vera.shah@acme-corp.com",
+    "true_manager_id": "EMP-1459",
     "expected_issue": "MANAGER_CONFLICT",
     "collides": false,
     "affected_ids": [
-      "EMP-1281"
+      "EMP-1416"
     ],
     "ref_style": ""
   },
   {
     "kind": "email_mismatch",
-    "employee_id": "EMP-1107",
+    "employee_id": "EMP-1138",
     "field": "manager_email",
-    "original": "nadia.bauer2@acme-corp.com",
-    "corrupted": "grace.bennett@acme-corp.com",
-    "true_manager_id": "EMP-1310",
+    "original": "abena.nguyen@acme-corp.com",
+    "corrupted": "rosa.nguyen@acme-corp.com",
+    "true_manager_id": "EMP-1407",
     "expected_issue": "MANAGER_CONFLICT",
     "collides": false,
     "affected_ids": [
-      "EMP-1107"
+      "EMP-1138"
     ],
     "ref_style": ""
   },
   {
     "kind": "email_mismatch",
-    "employee_id": "EMP-1250",
+    "employee_id": "EMP-1239",
     "field": "manager_email",
-    "original": "maya.park@acme-corp.com",
-    "corrupted": "noah.shah@acme-corp.com",
-    "true_manager_id": "EMP-1100",
+    "original": "uma.moreau@acme-corp.com",
+    "corrupted": "elif.alvarez2@acme-corp.com",
+    "true_manager_id": "EMP-1187",
     "expected_issue": "MANAGER_CONFLICT",
     "collides": false,
     "affected_ids": [
-      "EMP-1250"
+      "EMP-1239"
     ],
     "ref_style": ""
   },
   {
     "kind": "email_mismatch",
-    "employee_id": "EMP-1150",
+    "employee_id": "EMP-1189",
     "field": "manager_email",
-    "original": "priya.moreau@acme-corp.com",
-    "corrupted": "mei.ellis@acme-corp.com",
-    "true_manager_id": "EMP-1485",
+    "original": "zoe.haddad@acme-corp.com",
+    "corrupted": "sofia.usman@acme-corp.com",
+    "true_manager_id": "EMP-1218",
     "expected_issue": "MANAGER_CONFLICT",
     "collides": false,
     "affected_ids": [
-      "EMP-1150"
+      "EMP-1189"
     ],
     "ref_style": ""
   },
   {
     "kind": "cosmetic",
-    "employee_id": "EMP-1097",
+    "employee_id": "EMP-1467",
     "field": "email/employee_id",
-    "original": "rosa.moreau@acme-corp.com",
-    "corrupted": "  ROSA.MOREAU@ACME-CORP.COM ",
+    "original": "amara.das@acme-corp.com",
+    "corrupted": "  AMARA.DAS@ACME-CORP.COM ",
+    "true_manager_id": "EMP-1121",
+    "expected_issue": null,
+    "collides": false,
+    "affected_ids": [],
+    "ref_style": ""
+  },
+  {
+    "kind": "cosmetic",
+    "employee_id": "EMP-1449",
+    "field": "email/employee_id",
+    "original": "arjun.das3@acme-corp.com",
+    "corrupted": "  ARJUN.DAS3@ACME-CORP.COM ",
+    "true_manager_id": "EMP-1308",
+    "expected_issue": null,
+    "collides": false,
+    "affected_ids": [],
+    "ref_style": ""
+  },
+  {
+    "kind": "cosmetic",
+    "employee_id": "EMP-1176",
+    "field": "email/employee_id",
+    "original": "tariq.gupta@acme-corp.com",
+    "corrupted": "  TARIQ.GUPTA@ACME-CORP.COM ",
+    "true_manager_id": "EMP-1253",
+    "expected_issue": null,
+    "collides": false,
+    "affected_ids": [],
+    "ref_style": ""
+  },
+  {
+    "kind": "cosmetic",
+    "employee_id": "EMP-1035",
+    "field": "email/employee_id",
+    "original": "abena.ito@acme-corp.com",
+    "corrupted": "  ABENA.ITO@ACME-CORP.COM ",
+    "true_manager_id": "EMP-1292",
+    "expected_issue": null,
+    "collides": false,
+    "affected_ids": [],
+    "ref_style": ""
+  },
+  {
+    "kind": "cosmetic",
+    "employee_id": "EMP-1165",
+    "field": "email/employee_id",
+    "original": "lena.singh@acme-corp.com",
+    "corrupted": "  LENA.SINGH@ACME-CORP.COM ",
+    "true_manager_id": "EMP-1459",
+    "expected_issue": null,
+    "collides": false,
+    "affected_ids": [],
+    "ref_style": ""
+  },
+  {
+    "kind": "missing_department",
+    "employee_id": "EMP-1499",
+    "field": "department",
+    "original": "Customer Success",
+    "corrupted": "",
+    "true_manager_id": "EMP-1302",
+    "expected_issue": null,
+    "collides": false,
+    "affected_ids": [],
+    "ref_style": ""
+  },
+  {
+    "kind": "missing_department",
+    "employee_id": "EMP-1213",
+    "field": "department",
+    "original": "Operations",
+    "corrupted": "",
+    "true_manager_id": "EMP-1163",
+    "expected_issue": null,
+    "collides": false,
+    "affected_ids": [],
+    "ref_style": ""
+  },
+  {
+    "kind": "missing_department",
+    "employee_id": "EMP-1433",
+    "field": "department",
+    "original": "Operations",
+    "corrupted": "",
     "true_manager_id": "EMP-1218",
     "expected_issue": null,
     "collides": false,
@@ -868,48 +659,12 @@
     "ref_style": ""
   },
   {
-    "kind": "cosmetic",
-    "employee_id": "EMP-1113",
-    "field": "email/employee_id",
-    "original": "hana.garcia@acme-corp.com",
-    "corrupted": "  HANA.GARCIA@ACME-CORP.COM ",
-    "true_manager_id": "EMP-1455",
-    "expected_issue": null,
-    "collides": false,
-    "affected_ids": [],
-    "ref_style": ""
-  },
-  {
-    "kind": "cosmetic",
-    "employee_id": "EMP-1033",
-    "field": "email/employee_id",
-    "original": "noah.silva@acme-corp.com",
-    "corrupted": "  NOAH.SILVA@ACME-CORP.COM ",
-    "true_manager_id": "EMP-1182",
-    "expected_issue": null,
-    "collides": false,
-    "affected_ids": [],
-    "ref_style": ""
-  },
-  {
-    "kind": "cosmetic",
-    "employee_id": "EMP-1119",
-    "field": "email/employee_id",
-    "original": "yara.haddad@acme-corp.com",
-    "corrupted": "  YARA.HADDAD@ACME-CORP.COM ",
-    "true_manager_id": "EMP-1031",
-    "expected_issue": null,
-    "collides": false,
-    "affected_ids": [],
-    "ref_style": ""
-  },
-  {
-    "kind": "cosmetic",
-    "employee_id": "EMP-1208",
-    "field": "email/employee_id",
-    "original": "grace.schmidt2@acme-corp.com",
-    "corrupted": "  GRACE.SCHMIDT2@ACME-CORP.COM ",
-    "true_manager_id": "EMP-1267",
+    "kind": "missing_department",
+    "employee_id": "EMP-1198",
+    "field": "department",
+    "original": "Operations",
+    "corrupted": "",
+    "true_manager_id": "EMP-1482",
     "expected_issue": null,
     "collides": false,
     "affected_ids": [],
@@ -917,59 +672,11 @@
   },
   {
     "kind": "missing_department",
-    "employee_id": "EMP-1483",
+    "employee_id": "EMP-1115",
     "field": "department",
-    "original": "Product",
+    "original": "Operations",
     "corrupted": "",
-    "true_manager_id": "EMP-1285",
-    "expected_issue": null,
-    "collides": false,
-    "affected_ids": [],
-    "ref_style": ""
-  },
-  {
-    "kind": "missing_department",
-    "employee_id": "EMP-1120",
-    "field": "department",
-    "original": "Product",
-    "corrupted": "",
-    "true_manager_id": "EMP-1483",
-    "expected_issue": null,
-    "collides": false,
-    "affected_ids": [],
-    "ref_style": ""
-  },
-  {
-    "kind": "missing_department",
-    "employee_id": "EMP-1185",
-    "field": "department",
-    "original": "Customer Success",
-    "corrupted": "",
-    "true_manager_id": "EMP-1207",
-    "expected_issue": null,
-    "collides": false,
-    "affected_ids": [],
-    "ref_style": ""
-  },
-  {
-    "kind": "missing_department",
-    "employee_id": "EMP-1121",
-    "field": "department",
-    "original": "Customer Success",
-    "corrupted": "",
-    "true_manager_id": "EMP-1000",
-    "expected_issue": null,
-    "collides": false,
-    "affected_ids": [],
-    "ref_style": ""
-  },
-  {
-    "kind": "missing_department",
-    "employee_id": "EMP-1051",
-    "field": "department",
-    "original": "Engineering",
-    "corrupted": "",
-    "true_manager_id": "EMP-1031",
+    "true_manager_id": "EMP-1402",
     "expected_issue": null,
     "collides": false,
     "affected_ids": [],

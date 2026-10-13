@@ -6,11 +6,12 @@ flagged that no corruption explains (a false alarm)?
 
 
 import math
-from collections import defaultdict
+from collections import Counter, defaultdict
 from dataclasses import dataclass
 
 from .models import ImportResult, IssueCode, RowIssue
 from .pipeline import run_import_preview
+from .suggestions import Suggestion, SuggestOptions, suggest_fixes
 from .synthetic import ID_TYPO, KINDS, Corruption, SyntheticOrg, generate_org
 
 
@@ -137,3 +138,140 @@ def format_benchmark(b:BenchmarkResult)->str:
             cells.append(f"{_pct(silent,total)} [{lo:.1%}, {hi:.1%}] ({silent}/{total})")
         lines.append(f"| {density:.0%} | {cells[0]} | {cells[1]} |")
     return "\n".join(lines)
+
+
+#---- suggested fixes ----
+
+CORRECT="correct"
+WRONG="wrong" #suggested a manager, and it is not the true one (or there is no true one)
+ABSTAINED="abstained" #no suggestion where a true manager exists
+
+@dataclass
+class SuggestionOutcome:
+    corruption:Corruption
+    suggestion:Suggestion
+    density:float
+    outcome:str
+
+def evaluate_suggestions(org:SyntheticOrg,suggestions:list[Suggestion],density:float=1.0)->list[SuggestionOutcome]:
+
+    #only corruptions that surfaced as a manager issue get a suggestion; silent ones are the
+    #detection benchmark's problem, not this one's
+
+    by_row={s.employee_id:s for s in suggestions}
+    outcomes=[]
+    for c in org.corruptions:
+        s=by_row.get(c.employee_id)
+        if s is None:
+            continue
+        if s.suggested_manager_id is None:
+            outcome=CORRECT if c.true_manager_id is None else ABSTAINED
+        else:
+            outcome=CORRECT if s.suggested_manager_id==c.true_manager_id else WRONG
+        outcomes.append(SuggestionOutcome(c,s,density,outcome))
+    return outcomes
+
+#confidences in suggestions.CONFIDENCE are measured on these seeds; reported results use seeds 0..n,
+#so the numbers in the benchmark are on orgs the calibration never saw
+CALIBRATION_SEED_START=10_000
+
+def collect_suggestion_outcomes(size:int=500,seeds:int=20,densities:tuple[float,...]=(1.0,0.5,0.1),
+                                options:SuggestOptions|None=None,seed_start:int=0)->list[SuggestionOutcome]:
+    outcomes=[]
+    for density in densities:
+        for seed in range(seed_start,seed_start+seeds):
+            org=generate_org(size,seed=seed,corruption_rate=0.01,id_density=density)
+            suggestions=suggest_fixes(run_import_preview(org.csv_bytes),options)
+            outcomes+=evaluate_suggestions(org,suggestions,density)
+    return outcomes
+
+@dataclass
+class PrecisionCoverage:
+    suggested:int #suggestions made (a manager was proposed)
+    correct_suggestions:int
+    fixable:int #issues where a true manager exists
+    unfixable:int #issues where the true answer is "no suggestion" (manager not in file)
+    wrong_on_unfixable:int #suggested a manager where none should be suggested
+
+    @property
+    def precision(self)->float:
+        return self.correct_suggestions/self.suggested if self.suggested else 1.0
+
+    @property
+    def coverage(self)->float:
+        return self.correct_suggestions/self.fixable if self.fixable else 0.0
+
+def precision_coverage(outcomes:list[SuggestionOutcome],threshold:float=0.0)->PrecisionCoverage:
+    made=[o for o in outcomes if o.suggestion.suggested_manager_id and o.suggestion.confidence>=threshold]
+    return PrecisionCoverage(
+        suggested=len(made),
+        correct_suggestions=sum(o.outcome==CORRECT for o in made),
+        fixable=sum(o.corruption.true_manager_id is not None for o in outcomes),
+        unfixable=sum(o.corruption.true_manager_id is None for o in outcomes),
+        wrong_on_unfixable=sum(o.corruption.true_manager_id is None for o in made),
+    )
+
+DEFAULT_THRESHOLD=0.8 #operating point: suggestions below this are shown as "needs review", not proposed
+
+def format_suggestion_benchmark(outcomes:list[SuggestionOutcome],
+                                ablations:dict[str,list[SuggestionOutcome]]|None=None,
+                                threshold:float=DEFAULT_THRESHOLD)->str:
+    overall=precision_coverage(outcomes)
+    lines=[
+        f"{len(outcomes):,} manager issues from injected corruptions "
+        f"({overall.fixable:,} with a recoverable manager, {overall.unfixable:,} where the manager is not in the file)",
+        "",
+        f"By corruption kind, proposing fixes at confidence >= {threshold:.2f}:",
+        "",
+        "| Corruption | Issues | Proposed | Precision | Coverage |",
+        "|---|---:|---:|---:|---:|",
+    ]
+    for kind in KINDS:
+        sub=[o for o in outcomes if o.corruption.kind==kind]
+        if not sub:
+            continue
+        pc=precision_coverage(sub,threshold)
+        coverage="n/a, should abstain" if pc.fixable==0 else _pct(pc.correct_suggestions,pc.fixable)
+        lines.append(f"| `{kind}` | {len(sub)} | {pc.suggested} | {_pct(pc.correct_suggestions,pc.suggested)} | {coverage} |")
+
+    lines+=["","Calibration: stated confidence vs how often each rule was actually right (95% Wilson interval):","",
+            "| Rule | Suggestions | Stated confidence | Observed precision |","|---|---:|---:|---:|"]
+    by_reason:dict[str,list[SuggestionOutcome]]=defaultdict(list)
+    for o in outcomes:
+        if o.suggestion.suggested_manager_id:
+            by_reason[o.suggestion.reason].append(o)
+    for reason,sub in sorted(by_reason.items(),key=lambda kv:-kv[1][0].suggestion.confidence):
+        right=sum(o.outcome==CORRECT for o in sub)
+        lo,hi=wilson_interval(right,len(sub))
+        lines.append(f"| `{reason}` | {len(sub)} | {sub[0].suggestion.confidence:.2f} | "
+                     f"{_pct(right,len(sub))} [{lo:.1%}, {hi:.1%}] |")
+
+    lines+=["","Abstentions (no suggestion made):","","| Reason | Count | Manager actually in file |","|---|---:|---:|"]
+    abstain=Counter(o.suggestion.reason for o in outcomes if not o.suggestion.suggested_manager_id)
+    for reason,n in abstain.most_common():
+        recoverable=sum(1 for o in outcomes if o.suggestion.reason==reason and o.corruption.true_manager_id)
+        lines.append(f"| `{reason}` | {n} | {recoverable} |")
+
+    lines+=["","Precision vs coverage as the confidence threshold rises:","",
+            "| Threshold | Precision | Coverage | Wrong suggestions for absent managers |","|---:|---:|---:|---:|"]
+    for t in (0.0,0.25,0.5,0.8,0.97):
+        pc=precision_coverage(outcomes,t)
+        lines.append(f"| {t:.2f} | {pc.precision:.1%} | {pc.coverage:.1%} | {pc.wrong_on_unfixable} of {pc.unfixable} |")
+
+    if ablations:
+        lines+=["",f"Ablations at the {threshold:.2f} operating threshold (each row switches one rule off):","",
+                "| Variant | Precision | Coverage | Wrong suggestions for absent managers |","|---|---:|---:|---:|"]
+        for name,sub in {"full engine":outcomes,**ablations}.items():
+            pc=precision_coverage(sub,threshold)
+            lines.append(f"| {name} | {pc.precision:.1%} | {pc.coverage:.1%} | {pc.wrong_on_unfixable} of {pc.unfixable} |")
+    return "\n".join(lines)
+
+
+def calibrate_confidence(seeds:int=100,size:int=500)->dict[str,float]:
+    #observed precision per rule on the calibration seeds, rounded down to 2 decimals
+    outcomes=collect_suggestion_outcomes(size,seeds=seeds,seed_start=CALIBRATION_SEED_START)
+    by_reason:dict[str,list[bool]]=defaultdict(list)
+    for o in outcomes:
+        if o.suggestion.suggested_manager_id:
+            by_reason[o.suggestion.reason].append(o.outcome==CORRECT)
+    return {r:math.floor(100*sum(v)/len(v))/100 for r,v in sorted(by_reason.items())}

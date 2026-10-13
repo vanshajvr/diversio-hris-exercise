@@ -36,8 +36,19 @@ hris-import benchmark --seeds 100                        # score the validator o
 ```
 
 The validator flags every detectable corruption with the right code, with zero false alarms across 150,000 rows.
-The benchmark also found a blind spot: with sequential IDs, about 1 in 4 `manager_id` typos lands on another
+The benchmark also found a blind spot: with sequential IDs, about 1 in 5 `manager_id` typos lands on another
 real employee and imports silently. Write-up: [docs/detection-benchmark.md](docs/detection-benchmark.md).
+
+## Suggested fixes
+
+```bash
+hris-import suggest data/synthetic_org_500.csv   # proposed manager for each broken reference, with evidence
+hris-import benchmark --suggestions --seeds 100  # precision, coverage, calibration, ablations
+```
+
+Rule-based and explainable, and it abstains when the evidence is ambiguous. At the default 0.80 confidence
+threshold it is **99.4% precise** and recovers **90.2%** of fixable references, on orgs held out from calibration.
+It holds back on 99.1% of rows whose manager has left. Write-up: [docs/suggestion-benchmark.md](docs/suggestion-benchmark.md).
 
 ## Framework choice
 

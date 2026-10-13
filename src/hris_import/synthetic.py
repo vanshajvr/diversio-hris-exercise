@@ -188,7 +188,9 @@ def generate_org(n:int=500,seed:int=0,corruption_rate:float=0.01,id_density:floa
         return sorted(r["employee_id"] for r in rows if r["employee_id"] not in unsafe_targets)
 
     if per_kind:
-        #1. departed managers: drop a small team lead, their reports keep pointing at them
+        #1. departed managers: drop a small team lead whose reports still point at them.
+        #Half the time HR has already moved all but one report to the next manager up (partial cleanup),
+        #so a departure doesn't always show up as several rows sharing one missing manager.
         for _ in range(per_kind):
             mgr=pick(lambda r:r["employee_id"] in children and len(children[r["employee_id"]])<=8
                      and not set(children[r["employee_id"]])&used)
@@ -198,6 +200,13 @@ def generate_org(n:int=500,seed:int=0,corruption_rate:float=0.01,id_density:floa
             unsafe_targets.add(mgr["employee_id"])
             reports=children[mgr["employee_id"]]
             used.update(reports)
+            if rng.random()<0.5:
+                stale=rng.choice(reports)
+                for rep in reports:
+                    if rep!=stale:
+                        by_id[rep]["_mgr"]=mgr["_mgr"]
+                        _set_ref(by_id[rep],by_id[mgr["_mgr"]],by_id[rep]["_style"])
+                reports=[stale]
             for rep in reports:
                 corruptions.append(Corruption(DEPARTED_MANAGER,rep,"manager_id/manager_email",mgr["employee_id"],
                                               mgr["employee_id"],None,IssueCode.MANAGER_NOT_FOUND,
