@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hris-import"
-version = "0.6.0"
+version = "1.0.0"
 description = "Diversio SDE Intern Project: validate HRIS employee CSVs and analyse reporting hierarchies"
 readme = "README.md"
 requires-python = ">=3.11"
